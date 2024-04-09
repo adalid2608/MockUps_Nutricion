@@ -116,7 +116,7 @@ function initialize() {
             protein: 4.9,
         },
         {
-            name: 'Alejandro',
+            name: 'Armando',
             calories: 518,
             fat: 26,
             carbs: 65,
