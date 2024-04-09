@@ -1,0 +1,2875 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="WB DataDic" />
+    <meta name="description" content="bd_gimnasio_210077 Data Dictionary." />
+    <title>bd_gimnasio_210077 Data Dictionary</title>
+    <style type="text/css">
+    table{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    abbr{
+        cursor: help;
+    }
+    table, td, th{
+        border-style: solid;
+        border-width: 1px;
+    }
+    table caption{
+        font-size: 120%;
+        font-weight: bold;
+    }
+    caption{
+        color: black;
+    }
+    td, th{
+        border-color: silver;
+    }
+    tr:hover{
+        color: #333;
+        background-color: #F2F2F2;
+    }
+    th{
+        background-color: silver;
+    }
+    td{
+        color: gray;
+    }
+    ul{
+        font-style: italic;
+    }
+    #title-sect{
+        color: gray;
+        text-align: right;
+    }
+    .proj-desc{
+        text-align: right;
+    }
+    </style>
+</head>
+<body>
+<div id="title-sect">
+<h1>bd_gimnasio_210077<br> Data Dictionay</h1>
+<p>
+<em>2024-04-09</em>
+</p>
+<p class="proj-desc">
+<em></em>
+</p>
+</div>
+<h2>Alphabetic Index</h2>
+<ul>
+<li><a href='#areas'>areas</a></li>
+<li><a href='#bitacora'>bitacora</a></li>
+<li><a href='#detalles_pedidos'>detalles_pedidos</a></li>
+<li><a href='#detalles_programas_saludables'>detalles_programas_saludables</a></li>
+<li><a href='#dietas'>dietas</a></li>
+<li><a href='#dietas_usuarios'>dietas_usuarios</a></li>
+<li><a href='#ejercicios'>ejercicios</a></li>
+<li><a href='#empleados'>empleados</a></li>
+<li><a href='#equipos'>equipos</a></li>
+<li><a href='#equipos_existencias'>equipos_existencias</a></li>
+<li><a href='#indicadores_nutricionales'>indicadores_nutricionales</a></li>
+<li><a href='#instructores'>instructores</a></li>
+<li><a href='#membresias'>membresias</a></li>
+<li><a href='#membresias_usuarios'>membresias_usuarios</a></li>
+<li><a href='#miembros'>miembros</a></li>
+<li><a href='#pedidos'>pedidos</a></li>
+<li><a href='#personas'>personas</a></li>
+<li><a href='#preguntas_nutricionales'>preguntas_nutricionales</a></li>
+<li><a href='#productos'>productos</a></li>
+<li><a href='#programas_saludables'>programas_saludables</a></li>
+<li><a href='#rutinas'>rutinas</a></li>
+<li><a href='#rutinas_ejercicios'>rutinas_ejercicios</a></li>
+<li><a href='#seguimientos_dietas_usuarios'>seguimientos_dietas_usuarios</a></li>
+<li><a href='#sucursales'>sucursales</a></li>
+<li><a href='#usuarios'>usuarios</a></li>
+<li><a href='#valoraciones_nutricionales'>valoraciones_nutricionales</a></li>
+</ul>
+<table id='areas'>
+<caption>areas</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: D&#233;vil, Cat&#225;logo\nDescripci&#243;n de la Tabla: Esta tabla almacena informaci&#243;n sobre las &#225;reas dentro de la organizaci&#243;n. Contiene el nombre y la Descripci&#243;n del &#225;rea, as&#237; como el ID del empleado responsable de dicha &#225;rea y el ID de la sucursal a la que pertenece. Tambi&#233;n registra el total de equipos asociados al &#225;rea y su estatus.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del &#225;rea.\nTipo: Num&#233;rico (Entero).\nNaturaleza: Cuantitativo.\nDominio: n&#250;meros enteros positivos.\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Nombre</td>
+    <td>VARCHAR(80)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Nombre del &#225;rea.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 80 caracteres.</td>
+</tr>
+<tr>
+    <td>Descripcion</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Descripci&#243;n detallada del &#225;rea.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.</td>
+</tr>
+<tr>
+    <td>Responsable_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: ID del empleado responsable del &#225;rea.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Sucursal_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: ID de la sucursal a la que pertenece el &#225;rea.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Total_Equipos</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>'0'</td>
+    <td>Descripci&#243;n: Total de equipos asociados al &#225;rea.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros no negativos.</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Descripci&#243;n: Estatus del &#225;rea.\nTipo: Binario (Bit)\nNaturaleza: Cualitativo\nDominio: 0 para inactivo, 1 para activo.</td>
+</tr>
+<table id='bitacora'>
+<caption>bitacora</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: Isla, Base\nDescripci&#243;n de la Tabla: Esta tabla registra las operaciones realizadas en la base de datos. Almacena informaci&#243;n sobre qui&#233;n realiz&#243; la operaci&#243;n, qu&#233; operaci&#243;n se realiz&#243; (crear, leer, actualizar, eliminar), en qu&#233; tabla se realiz&#243; la operaci&#243;n, una Descripci&#243;n de la operaci&#243;n, la fecha y hora de la operaci&#243;n, y el estatus de la misma.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la entrada en la bit&#225;cora.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Usuario</td>
+    <td>VARCHAR(50)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Nombre de usuario que realiz&#243; la operaci&#243;n.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto con hasta 50 caracteres.</td>
+</tr>
+<tr>
+    <td>Operacion</td>
+    <td>ENUM('Create', 'Read', 'Update', 'Delete')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Tipo de operaci&#243;n realizada en la base de datos (crear, actualizar, eliminar).\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Create, Update, Delete}</td>
+</tr>
+<tr>
+    <td>Tabla</td>
+    <td>VARCHAR(50)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Nombre de la tabla en la que se realiz&#243; la operaci&#243;n.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto con hasta 50 caracteres.</td>
+</tr>
+<tr>
+    <td>Descripcion</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Descripci&#243;n detallada de la operaci&#243;n realizada.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.</td>
+</tr>
+<tr>
+    <td>Fecha_Hora</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Descripci&#243;n: Fecha y hora en que se realiz&#243; la operaci&#243;n.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Descripci&#243;n: Estatus de la operaci&#243;n.\nTipo: Binario (Bit)\nNaturaleza: Cualitativo\nDominio: 0 para inactivo, 1 para activo.</td>
+</tr>
+<table id='detalles_pedidos'>
+<caption>detalles_pedidos</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla:D&#233;vil, Derivada\nDescripci&#243;n de la Tabla: Esta tabla almacena los detalles de los pedidos realizados. Contiene informaci&#243;n sobre el pedido al que pertenece, el producto solicitado, la cantidad, el total parcial, la fecha de registro, la fecha de entrega (si aplica) y el estatus del detalle del pedido.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del detalle del pedido.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Pedido_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: ID del pedido al que pertenece el detalle.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Producto_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: ID del producto solicitado.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Cantidad</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Cantidad del producto solicitado en el pedido.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros no negativos.</td>
+</tr>
+<tr>
+    <td>Total_Parcial</td>
+    <td>DECIMAL(6,2)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Total parcial del detalle del pedido.\nTipo: Num&#233;rico (Decimal)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros decimales con 6 D&#237;gitos en total y 2 D&#237;gitos despu&#233;s del punto.</td>
+</tr>
+<tr>
+    <td>Fecha_Registro</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Descripci&#243;n: Fecha y hora en que se registr&#225; el detalle del pedido.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Fecha_Entrega</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Fecha y hora de entrega programada del pedido.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Descripci&#243;n: Estatus del detalle del pedido.\nTipo: Binario (Bit)\nNaturaleza: Cualitativo\nDominio: 0 para inactivo, 1 para activo.</td>
+</tr>
+<table id='detalles_programas_saludables'>
+<caption>detalles_programas_saludables</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla:D&#233;vil, Derivada\nDescripci&#243;n de la Tabla: Esta tabla almacena los detalles de los programas saludables asignados a los usuarios. Contiene informaci&#243;n sobre el programa, la rutina asociada, la dieta asignada, la fecha de inicio y fin del programa, el estado del programa y el ID &#250;nico del detalle.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del detalle del programa saludable.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Programa_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: ID del programa saludable al que pertenece el detalle.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Rutina_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: ID de la rutina asociada al detalle del programa.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Dieta_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: ID de la dieta asignada al detalle del programa.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Fecha_Inicio</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Descripci&#243;n: Fecha y hora de inicio del programa.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Fecha_Fin</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Fecha y hora de fin del programa.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>ENUM('Programada', 'Iniciada', 'Seguimiento', 'Suspendida', 'Finalizada')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Estado del programa saludable.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Programada, Iniciada, Seguimiento, Suspendida, Finalizada}</td>
+</tr>
+<table id='dietas'>
+<caption>dietas</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: D&#233;vil\nDescripci&#243;n de la Tabla: Esta tabla almacena informaci&#243;n sobre las dietas disponibles en el sistema. Contiene el nombre de la dieta, Descripci&#243;n, objetivo, restricciones y el estado de la dieta.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la dieta.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Nombre</td>
+    <td>VARCHAR(300)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Nombre de la dieta.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 300 caracteres.</td>
+</tr>
+<tr>
+    <td>Descripccion</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Descripci&#243;n detallada de la dieta.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.</td>
+</tr>
+<tr>
+    <td>Objetivo</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Objetivo de la dieta.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.</td>
+</tr>
+<tr>
+    <td>Restricciones</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Restricciones de la dieta.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Descripci&#243;n: Estatus de la dieta.\nTipo: Binario (Bit)\nNaturaleza: Cualitativo\nDominio: 0 para inactivo, 1 para activo.</td>
+</tr>
+<table id='dietas_usuarios'>
+<caption>dietas_usuarios</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla:D&#233;vil, Derivada\nDescripci&#243;n de la Tabla: Esta tabla almacena las relaciones entre los usuarios y las dietas asignadas. Contiene informaci&#243;n sobre el usuario al que se asigna la dieta, la dieta asignada, las fechas de asignaci&#243;n, inicio y fin de la dieta, observaciones adicionales y el estado de la asignaci&#243;n.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>id</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la asignaci&#243;n de dieta a usuario.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>usuario_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: ID del usuario al que se asigna la dieta.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>dieta_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: ID de la dieta asignada al usuario.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>fecha_asignacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Fecha y hora de asignaci&#243;n de la dieta al usuario.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>fecha_inicio</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Fecha y hora de inicio de la dieta para el usuario.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>fecha_fin</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Fecha y hora de fin de la dieta para el usuario.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.\n</td>
+</tr>
+<tr>
+    <td>observaciones</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Observaciones adicionales sobre la asignaci&#243;n de la dieta.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.\n</td>
+</tr>
+<tr>
+    <td>estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Descripci&#243;n: Estatus de la asignaci&#243;n de la dieta.\nTipo: Binario (Bit)\nNaturaleza: Cualitativo\nDominio: 0 para inactivo, 1 para activo.</td>
+</tr>
+<table id='ejercicios'>
+<caption>ejercicios</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: Fuerte, Cat&#225;logo\nDescripci&#243;n de la Tabla: Esta tabla almacena informaci&#243;n sobre los ejercicios disponibles en el sistema. Contiene el nombre formal y com&#250;n del ejercicio, Descripci&#243;n, tipo de ejercicio, video de ejemplo (si est&#225; disponible), consideraciones y dificultad del ejercicio.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del ejercicio.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Nombre_Formal</td>
+    <td>VARCHAR(80)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Nombre formal del ejercicio.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 80 caracteres.</td>
+</tr>
+<tr>
+    <td>Nombre_Comun</td>
+    <td>VARCHAR(50)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Nombre com&#250;n o popular del ejercicio.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 50 caracteres.</td>
+</tr>
+<tr>
+    <td>Descripcion</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Descripci&#243;n detallada del ejercicio.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.\n</td>
+</tr>
+<tr>
+    <td>Tipo</td>
+    <td>ENUM('Aer&#243;bico', 'Resistencia', 'Flexibilidad', 'Fuerza')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Tipo de ejercicio.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Aer&#243;bico, Resistencia, Flexibilidad, Fuerza}</td>
+</tr>
+<tr>
+    <td>Video_Ejemplo</td>
+    <td>VARCHAR(100)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Enlace al video de ejemplo del ejercicio.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto con hasta 100 caracteres.</td>
+</tr>
+<tr>
+    <td>Consideraciones</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Consideraciones especiales para realizar el ejercicio.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.</td>
+</tr>
+<tr>
+    <td>Dificultad</td>
+    <td>ENUM('b&#225;sica', 'Intermedia', 'Avanzada')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Nivel de dificultad del ejercicio.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {b&#225;sica, Intermedia, Avanzada}</td>
+</tr>
+<table id='empleados'>
+<caption>empleados</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: Base\nDescripci&#243;n de la Tabla: Esta tabla almacena informaci&#243;n sobre los empleados del sistema. Contiene detalles como el ID de la persona, el puesto, el &#225;rea de trabajo, el n&#250;mero de empleado, la sucursal a la que est&#225;n asignados y la fecha de contrataci&#243;n.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>Persona_ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la persona que es empleado.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Se relaciona con la tabla de personas.</td>
+</tr>
+<tr>
+    <td>Puesto</td>
+    <td>VARCHAR(50)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Puesto o cargo que ocupa el empleado.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 50 caracteres.</td>
+</tr>
+<tr>
+    <td>Area</td>
+    <td>VARCHAR(60)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: &#225;rea de trabajo a la que pertenece el empleado.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 60 caracteres.</td>
+</tr>
+<tr>
+    <td>Numero_Empleado</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: n&#250;mero &#250;nico de identificaci&#243;n del empleado.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Sucursal_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: ID de la sucursal a la que est&#225; asignado el empleado.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nComposici&#243;n: Se relaciona con la tabla de sucursales.</td>
+</tr>
+<tr>
+    <td>Fecha_Contratacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Fecha de contrataci&#243;n del empleado.\nTipo: Fecha\nNaturaleza: Cuantitativo\nDominio: Valores de fecha v&#225;lidos.</td>
+</tr>
+<table id='equipos'>
+<caption>equipos</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: Cat&#225;logo\nDescripci&#243;n de la Tabla: Esta tabla almacena informaci&#243;n sobre los equipos disponibles en el sistema. Contiene detalles como el nombre, la Descripci&#243;n, la marca, el modelo, las especificaciones y la cantidad total en existencia.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del equipo.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Nombre</td>
+    <td>VARCHAR(250)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Nombre del equipo.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 250 caracteres.</td>
+</tr>
+<tr>
+    <td>Descripcion</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Descripci&#243;n detallada del equipo.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.</td>
+</tr>
+<tr>
+    <td>Marca</td>
+    <td>VARCHAR(50)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Marca del equipo.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 50 caracteres.</td>
+</tr>
+<tr>
+    <td>Modelo</td>
+    <td>VARCHAR(50)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Modelo del equipo.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 50 caracteres.</td>
+</tr>
+<tr>
+    <td>Especificaciones</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Especificaciones t&#233;cnicas del equipo.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.</td>
+</tr>
+<tr>
+    <td>Fotografia</td>
+    <td>VARCHAR(100)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Enlace a la fotograf&#237;a del equipo.\\nTipo: AlfaNum&#233;rico (Texto)\\nNaturaleza: Cualitativo\\nDominio: Texto con hasta 100 caracteres.</td>
+</tr>
+<tr>
+    <td>Total_Existencia</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Cantidad total de equipos en existencia.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<table id='equipos_existencias'>
+<caption>equipos_existencias</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla:D&#233;vil, Derivada\nDescripci&#243;n de la Tabla: Esta tabla almacena informaci&#243;n sobre la existencia de equipos en diferentes &#225;reas. Contiene detalles como el ID del equipo, el ID del &#225;rea en la que se encuentra el equipo, el color, el estado de la existencia del equipo y la fecha de asignaci&#243;n.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la existencia del equipo.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Equipo_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: ID del equipo asociado a esta existencia.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nComposici&#243;n: Se relaciona con la tabla de equipos.</td>
+</tr>
+<tr>
+    <td>Area_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: ID del &#225;rea donde se encuentra el equipo.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nComposici&#243;n: Se relaciona con la tabla de &#225;reas.</td>
+</tr>
+<tr>
+    <td>Color</td>
+    <td>VARCHAR(100)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Color del equipo.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 100 caracteres.</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>ENUM('Nuevo', 'Semi-Nuevo', 'Bueno', 'Regular', 'Malo', 'Baja', 'Extraviado')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Estado de la existencia del equipo.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Nuevo, Semi-Nuevo, Bueno, Regular, Malo, Baja, Extraviado}</td>
+</tr>
+<tr>
+    <td>Fecha_Asignacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Descripci&#243;n: Fecha y hora de asignaci&#243;n del equipo al &#225;rea.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<table id='indicadores_nutricionales'>
+<caption>indicadores_nutricionales</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla:Fuerte, Cat&#225;logo\nDescripci&#243;n de la Tabla: Esta tabla almacena informaci&#243;n sobre los indicadores nutricionales utilizados para evaluar la salud de los usuarios. Contiene detalles como la edad, el &#237;ndice de masa corporal (IMC), la circunferencia de la cintura, y el nivel de nutrientes en la sangre.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>id</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>\nDescripci&#243;n: Identificador &#250;nico del indicador nutricional.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Edad</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Edad del usuario para el c&#225;lculo de los indicadores.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>IMC</td>
+    <td>DECIMAL(5,3)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: &#237;ndice de Masa Corporal del usuario.\nTipo: Num&#233;rico (Decimal)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros decimales positivos.</td>
+</tr>
+<tr>
+    <td>circunferencia_cintura</td>
+    <td>DECIMAL(5,2)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Circunferencia de la cintura del usuario.\nTipo: Num&#233;rico (Decimal)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros decimales positivos.</td>
+</tr>
+<tr>
+    <td>nivel_nutriente_sangre</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Nivel de nutrientes en la sangre del usuario.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.</td>
+</tr>
+<table id='instructores'>
+<caption>instructores</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: D&#233;vil\nDescripci&#243;n de la Tabla: Esta tabla almacena informaci&#243;n sobre los instructores del sistema. Contiene detalles como el ID del empleado, la especialidad del instructor, el horario de disponibilidad, el total de miembros atendidos y la valoraci&#243;n de los miembros.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>Empleado_ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del empleado que es instructor.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Se relaciona con la tabla de empleados.</td>
+</tr>
+<tr>
+    <td>Especialidad</td>
+    <td>VARCHAR(100)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Especialidad o &#225;rea de experiencia del instructor.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 100 caracteres.</td>
+</tr>
+<tr>
+    <td>Horario_Disponibilidad</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Horario de disponibilidad del instructor.\nTipo: AlfaNum&#233;rico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.</td>
+</tr>
+<tr>
+    <td>Total_Miembros_Atendidos</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Total de miembros atendidos por el instructor.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Valoracion_Miembro</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>'0'</td>
+    <td>Descripci&#243;n: Valoraci&#243;n promedio otorgada por los miembros al instructor.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros no negativos.</td>
+</tr>
+<table id='membresias'>
+<caption>membresias</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: D&#233;vil\nDescripci&#243;n de la Tabla: Esta tabla almacena informaci&#243;n sobre las membres&#237;as disponibles en el sistema. Contiene detalles como el c&#243;digo de la membres&#237;a, el tipo, los servicios incluidos, el plan, el nivel, la fecha de inicio y fin, y el estado de la membres&#237;a.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la membres&#237;a.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Autoincremental.\n</td>
+</tr>
+<tr>
+    <td>Codigo</td>
+    <td>VARCHAR(50)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: c&#243;digo &#250;nico de identificaci&#243;n de la membres&#237;a.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 50 caracteres.\nRestricci&#243;n: Campo &#250;nico.</td>
+</tr>
+<tr>
+    <td>Tipo</td>
+    <td>ENUM('Individual', 'Familiar', 'Empresarial')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Tipo de membres&#237;a (Individual, Familiar, Empresarial).\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Individual, Familiar, Empresarial}</td>
+</tr>
+<tr>
+    <td>Tipo_Servicios</td>
+    <td>ENUM('Basicos', 'Completa', 'Coaching', 'Nutri&#243;logo')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Tipo de servicios incluidos en la membres&#237;a.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {b&#225;sicos, Completa, Coaching, Nutri&#243;logo}</td>
+</tr>
+<tr>
+    <td>Tipo_Plan</td>
+    <td>ENUM('Anual', 'Semestral', 'Trimestral', 'Bimestral', 'Mensual', 'Semanal', 'Diaria')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Tipo de plan de la membres&#237;a (Anual, Semestral, Trimestral, etc.).\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Anual, Semestral, Trimestral, Bimestral, Mensual, Semanal, Diaria}</td>
+</tr>
+<tr>
+    <td>Nivel</td>
+    <td>ENUM('Nuevo', 'Plata', 'Oro', 'Diamante')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Nivel de la membres&#237;a (Nuevo, Plata, Oro, Diamante).\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Nuevo, Plata, Oro, Diamante}</td>
+</tr>
+<tr>
+    <td>Fecha_Inicio</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Descripci&#243;n: Fecha y hora de inicio de la membresia para el o los usuarios.\\nTipo: Fecha y hora\\nNaturaleza: Cuantitativo\\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Fecha_Fin</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Fecha y hora de fin de la membresia.\\nTipo: Fecha y hora\\nNaturaleza: Cuantitativo\\nDominio: Valores de fecha y hora v&#225;lidos.\\n</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Descripci&#243;n: Estatus de la asignaci&#243;n de la membresia.\\nTipo: Binario (Bit)\\nNaturaleza: Cualitativo\\nDominio: 0 para inactivo, 1 para activo.</td>
+</tr>
+<tr>
+    <td>Fecha_Registro</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Descripci&#243;n: Fecha y hora de registro de la membresia al o los usuarios.\\nTipo: Fecha y hora\\nNaturaleza: Cuantitativo\\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Fecha_Actualizacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Descripci&#243;n: Fecha y hora de actualizaci&#243;n de la membresia al o los usuarios.\\nTipo: Fecha y hora\\nNaturaleza: Cuantitativo\\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<table id='membresias_usuarios'>
+<caption>membresias_usuarios</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla:D&#233;vil, Derivada\nDescripci&#243;n de la Tabla: Esta tabla establece la relaci&#243;n entre usuarios y membres&#237;as. Almacena informaci&#243;n sobre la membres&#237;a asignada a un usuario, la fecha de la &#250;ltima visita y el estado de la membres&#237;a.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>Membresia_ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la membres&#237;a asignada al usuario.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave primaria, se relaciona con la tabla de membres&#237;as.</td>
+</tr>
+<tr>
+    <td>Usuarios_ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del usuario al que se asigna la membres&#237;a.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave primaria, se relaciona con la tabla de usuarios.</td>
+</tr>
+<tr>
+    <td>Fecha_Ultima_Visita</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Descripci&#243;n: Fecha y hora de la &#250;ltima visita del usuario.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.\n</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Descripci&#243;n: Estado de la membres&#237;a asignada al usuario.\nTipo: Booleano\nNaturaleza: Cualitativo\nDominio: {Activa, Inactiva}</td>
+</tr>
+<table id='miembros'>
+<caption>miembros</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: D&#233;vil\nDescripci&#243;n de la Tabla: Esta tabla almacena informaci&#243;n sobre los miembros del sistema. Contiene detalles como el ID de la persona que es miembro, el tipo de membres&#237;a, si la membres&#237;a est&#225; activa, y la antig&#250;edad como miembro.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>Persona_ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la persona que es miembro.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave primaria, se relaciona con la tabla de personas.</td>
+</tr>
+<tr>
+    <td>Tipo</td>
+    <td>ENUM('Frecuente', 'Ocasional', 'Nuevo', 'Espor&#225;dico', 'Una sola visita')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Tipo de membres&#237;a del miembro (Frecuente, Ocasional, Nuevo, etc.).\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Frecuente, Ocasional, Nuevo, Espor&#225;dico, Una sola visita}</td>
+</tr>
+<tr>
+    <td>Membresia_Activa</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Descripci&#243;n: Indicador de si la membres&#237;a del miembro est&#225; activa.\nTipo: Booleano\nNaturaleza: Cualitativo\nDominio: {Activa, Inactiva}</td>
+</tr>
+<tr>
+    <td>Antiguedad</td>
+    <td>VARCHAR(80)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Tiempo que lleva el miembro siendo parte del sistema.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto descriptivo.</td>
+</tr>
+<table id='pedidos'>
+<caption>pedidos</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: D&#233;vil\nDescripci&#243;n de la Tabla: Almacena informaci&#243;n sobre los pedidos realizados en el sistema. Contiene detalles como el ID del usuario que realiz&#243; el pedido, el total del pedido, la fecha de registro y el estado del pedido.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del pedido.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Usuario_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del usuario que realiz&#243; el pedido.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de usuarios.</td>
+</tr>
+<tr>
+    <td>Total</td>
+    <td>DECIMAL(6,2)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Total del pedido realizado.\nTipo: Num&#233;rico (Decimal)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros decimales positivos.</td>
+</tr>
+<tr>
+    <td>Fecha_Registro</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Descripci&#243;n: Fecha y hora en que se registr&#225; el pedido.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Descripci&#243;n: Estado del pedido.\nTipo: Booleano\nNaturaleza: Cualitativo\nDominio: {Activo, Inactivo}</td>
+</tr>
+<table id='personas'>
+<caption>personas</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: Fuerte\nDescripci&#243;n de la Tabla: Contiene informaci&#243;n b&#225;sica sobre las personas registradas en el sistema, como nombre, apellidos, fecha de nacimiento, g&#233;nero, tipo de sangre, etc.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la persona.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Titulo_Cortesia</td>
+    <td>VARCHAR(20)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: T&#237;tulo de cortes&#237;a de la persona (Sr., Sra., Dr., etc.).\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 20 caracteres.</td>
+</tr>
+<tr>
+    <td>Nombre</td>
+    <td>VARCHAR(80)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Nombre de la persona.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 80 caracteres.</td>
+</tr>
+<tr>
+    <td>Primer_Apellido</td>
+    <td>VARCHAR(80)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Primer apellido de la persona.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 80 caracteres.</td>
+</tr>
+<tr>
+    <td>Segundo_Apellido</td>
+    <td>VARCHAR(80)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Segundo apellido de la persona.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 80 caracteres.</td>
+</tr>
+<tr>
+    <td>Fecha_Nacimiento</td>
+    <td>DATE</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Fecha de nacimiento de la persona.\nTipo: Fecha\nNaturaleza: Cuantitativo\nDominio: Valores de fecha v&#225;lidos</td>
+</tr>
+<tr>
+    <td>Fotografia</td>
+    <td>VARCHAR(100)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Ruta o nombre de archivo de la fotograf&#237;a de la persona.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 100 caracteres.</td>
+</tr>
+<tr>
+    <td>Genero</td>
+    <td>ENUM('M', 'F', 'N/B')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: G&#233;nero de la persona (Masculino, Femenino, No binario).\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {M, F, N/B}</td>
+</tr>
+<tr>
+    <td>Tipo_Sangre</td>
+    <td>ENUM('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Tipo de sangre de la persona.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {A+, A-, B+, B-, AB+, AB-, O+, O-}</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Descripci&#243;n: Estado de la persona.\nTipo: Booleano\nNaturaleza: Cualitativo\nDominio: {Activo, Inactivo}</td>
+</tr>
+<tr>
+    <td>Fecha_Registro</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Descripci&#243;n: Fecha y hora en que se registr&#225; la persona.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Fecha_Actualizacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Fecha y hora de la &#250;ltima actualizaci&#243;n de los datos de la persona.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<table id='preguntas_nutricionales'>
+<caption>preguntas_nutricionales</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: Fuerte, Cat&#225;logo\nDescripci&#243;n de la Tabla: Almacena respuestas a preguntas relacionadas con la nutrici&#243;n de los usuarios, como la cantidad de comidas por D&#237;a, la variedad de comidas, el consumo de carbohidratos, etc.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>persona_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la persona a la que se le han hecho las preguntas nutricionales.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de personas.</td>
+</tr>
+<tr>
+    <td>comidas_x_dia</td>
+    <td>ENUM('2', '3', '4', '5 o mas')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: n&#250;mero de comidas que la persona consume en un D&#237;a.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {2, 3, 4, 5 o m&#225;s}</td>
+</tr>
+<tr>
+    <td>variedad_comidas</td>
+    <td>ENUM('Nunca', 'Algunas Veces', 'Normalmente', 'Siempre')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Frecuencia con la que la persona consume una variedad de comidas.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Nunca, Algunas veces, Normalmente, Siempre}</td>
+</tr>
+<tr>
+    <td>regularidad_carbohidratos</td>
+    <td>ENUM('Nunca', 'Algunas Veces', 'Normalmente', 'Siempre')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Frecuencia con la que la persona consume carbohidratos.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Nunca, Algunas veces, Normalmente, Siempre}</td>
+</tr>
+<tr>
+    <td>grasa_g</td>
+    <td>ENUM('10g', '30g', '60g', '100g o mas')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Cantidad de grasa en gramos que la persona consume.\nTipo: Enumerado\nNaturaleza: Cuantitativo\nDominio: {10g, 30g, 60g, 100g o m&#225;s}</td>
+</tr>
+<tr>
+    <td>calorias_consumidas</td>
+    <td>ENUM('Menos de 1000 Kcal', '1000 Kcal', '1500 Kcal', '2000 Kcal', '2500 Kcal', '3000 Kcal', '3500 v', '4000 Kcal', 'Mas de 4000 Kcal')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Cantidad de calor&#237;as consumidas por la persona.\nTipo: Enumerado\nNaturaleza: Cuantitativo\nDominio: {Menos de 1000 Kcal, 1000 Kcal, 1500 Kcal, 2000 Kcal, 2500 Kcal, 3000 Kcal, 3500 Kcal, 4000 Kcal, M&#225;s de 4000 Kcal}</td>
+</tr>
+<table id='productos'>
+<caption>productos</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: Fuerte\nDescripci&#243;n de la Tabla: Almacena informaci&#243;n sobre los productos disponibles, incluyendo su nombre, marca, c&#243;digo de barras, Descripci&#243;n, presentaci&#243;n, precio y fotograf&#237;a.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del producto.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nComposici&#243;n: Autoincremental.\n</td>
+</tr>
+<tr>
+    <td>Nombre</td>
+    <td>VARCHAR(150)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Nombre del producto.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 150 caracteres.</td>
+</tr>
+<tr>
+    <td>Marca</td>
+    <td>VARCHAR(100)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Marca del producto.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 100 caracteres.</td>
+</tr>
+<tr>
+    <td>Codigo_Barras</td>
+    <td>VARCHAR(100)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: c&#243;digo de barras del producto.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 100 caracteres.</td>
+</tr>
+<tr>
+    <td>Descripcion</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Descripci&#243;n detallada del producto.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto de longitud variable.</td>
+</tr>
+<tr>
+    <td>Presentacion</td>
+    <td>VARCHAR(50)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Presentaci&#243;n del producto (por ejemplo, unidad, paquete, caja).\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 50 caracteres.</td>
+</tr>
+<tr>
+    <td>Precio_Actual</td>
+    <td>DECIMAL(6,2)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Precio actual del producto.\nTipo: Num&#233;rico (Decimal)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros decimales con hasta 6 D&#237;gitos en total y 2 D&#237;gitos decimales.</td>
+</tr>
+<tr>
+    <td>Fotografia</td>
+    <td>VARCHAR(100)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Nombre del archivo de la fotograf&#237;a del producto.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 100 caracteres.</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Descripci&#243;n: Estatus de la disponibilidad del producto.\\\\nTipo: Binario (Bit)\\\\nNaturaleza: Cualitativo\\\\nDominio: 0 para inactivo, 1 para activo.</td>
+</tr>
+<table id='programas_saludables'>
+<caption>programas_saludables</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: D&#233;vil\nDescripci&#243;n de la Tabla: Almacena informaci&#243;n sobre los programas saludables registrados, incluyendo su nombre, usuario asociado, instructor asignado, estado, duraci&#243;n y porcentaje de avance.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del programa saludable.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Nombre</td>
+    <td>VARCHAR(250)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Nombre del programa saludable.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 250 caracteres.</td>
+</tr>
+<tr>
+    <td>Usuario_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del usuario al que est&#225; asociado el programa saludable.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de usuarios.</td>
+</tr>
+<tr>
+    <td>Instructor_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del instructor asignado al programa saludable.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de instructores.</td>
+</tr>
+<tr>
+    <td>Fecha_Creacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Descripci&#243;n: Fecha y hora de creaci&#243;n del programa saludable.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>ENUM('Registrado', 'Sugerido', 'Aprobado por el M&#233;dico', 'Aprobado por el Usuario', 'Rechazado por el M&#233;dico', 'Rechazado por el Usuario', 'Terminado', 'Suspendido', 'Cancelado')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>'Registrado'</td>
+    <td>Descripci&#243;n: Estado actual del programa saludable.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Registrado, Sugerido, Aprobado por el M&#233;dico, Aprobado por el Usuario, Rechazado por el M&#233;dico, Rechazado por el Usuario, Terminado, Suspendido, Cancelado}</td>
+</tr>
+<tr>
+    <td>Duracion</td>
+    <td>VARCHAR(80)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Duraci&#243;n estimada del programa saludable.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 80 caracteres.</td>
+</tr>
+<tr>
+    <td>Porcentaje_Avance</td>
+    <td>DECIMAL(5,2)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>'0.00'</td>
+    <td>Descripci&#243;n: Porcentaje de avance del programa saludable.\nTipo: Num&#233;rico (Decimal)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros decimales con hasta 5 D&#237;gitos en total y 2 D&#237;gitos decimales.</td>
+</tr>
+<tr>
+    <td>Fecha_Ultima_Actualizacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Fecha y hora de la &#250;ltima actualizaci&#243;n del programa saludable.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<table id='rutinas'>
+<caption>rutinas</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: D&#233;vil\nDescripci&#243;n de la Tabla: Almacena informaci&#243;n sobre las rutinas asignadas a usuarios, incluyendo el instructor asignado, el usuario asociado, fechas de asignaci&#243;n y t&#233;rmino, tiempo aproximado, estado y resultados esperados.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la rutina.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Instructor_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del instructor asignado a la rutina.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de instructores.</td>
+</tr>
+<tr>
+    <td>Usuario_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico del usuario al que est&#225; asignada la rutina.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de usuarios.</td>
+</tr>
+<tr>
+    <td>Fecha_Asignacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Descripci&#243;n: Fecha y hora de asignaci&#243;n de la rutina.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Fecha_Termino</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Descripci&#243;n: Fecha y hora de t&#233;rmino de la rutina.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Tiempo_Aproximado</td>
+    <td>TIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Tiempo aproximado estimado para completar la rutina.\nTipo: Temporal\nNaturaleza: Cuantitativo\nDominio: Valores de tiempo v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>ENUM('Concluido', 'Actual', 'Suspendida')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Estado actual de la rutina.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Concluido, Actual, Suspendida}</td>
+</tr>
+<tr>
+    <td>Resultados_Esperados</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Resultados esperados al completar la rutina.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto de longitud variable.</td>
+</tr>
+<table id='rutinas_ejercicios'>
+<caption>rutinas_ejercicios</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla:D&#233;vil, Derivada\nDescripci&#243;n de la Tabla: Asocia los ejercicios a las rutinas, indicando la cantidad de repeticiones, tiempo y estado.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>Ejercicio_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Identificador &#250;nico del ejercicio asociado a la rutina.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de ejercicios.</td>
+</tr>
+<tr>
+    <td>Rutina_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la rutina a la que se asocia el ejercicio.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de rutinas.</td>
+</tr>
+<tr>
+    <td>Repeticiones</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Cantidad de repeticiones del ejercicio.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Tiempo</td>
+    <td>TIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Tiempo dedicado al ejercicio.\nTipo: Temporal\nNaturaleza: Cuantitativo\nDominio: Valores de tiempo v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Descripci&#243;n: Estado del ejercicio dentro de la rutina.\nTipo: Binario\nNaturaleza: Cualitativo\nDominio: {0, 1} (0 para inactivo, 1 para activo).</td>
+</tr>
+<table id='seguimientos_dietas_usuarios'>
+<caption>seguimientos_dietas_usuarios</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla:D&#233;vil, Derivada\nDescripci&#243;n de la Tabla: Registra el seguimiento de las dietas asignadas a los usuarios, incluyendo Descripci&#243;n, empleado responsable, estado y porcentaje de avance.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>dieta_usuario_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la dieta asignada al usuario.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de dietas_usuarios.</td>
+</tr>
+<tr>
+    <td>descripcion</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Descripci&#243;n del seguimiento de la dieta.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto de longitud variable.</td>
+</tr>
+<tr>
+    <td>empleado_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Identificador &#250;nico del empleado responsable del seguimiento.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de empleados.</td>
+</tr>
+<tr>
+    <td>estatus</td>
+    <td>ENUM('Programada', 'Iniciada', 'Seguimiento', 'Suspendida', 'Finalizada')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Estado actual del seguimiento de la dieta.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Programada, Iniciada, Seguimiento, Suspendida, Finalizada}</td>
+</tr>
+<tr>
+    <td>porcentaje_avance</td>
+    <td>ENUM('0% a 10%', '11% a 20%', '21% a 30%', '31% a 40%', '41% a 50%', '51% a 60%', '61% a 70%', '71% a 80%', '81% a 90%', '91% a 100%')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Porcentaje de avance del seguimiento de la dieta.\nTipo: Enumerado\nNaturaleza: Cuantitativo\nDominio: {"0% a 10%", "11% a 20%", "21% a 30%", "31% a 40%", "41% a 50%", "51% a 60%", "61% a 70%", "71% a 80%", "81% a 90%", "91% a 100%"}</td>
+</tr>
+<table id='sucursales'>
+<caption>sucursales</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: D&#233;vil, Cat&#225;logo\nDescripci&#243;n de la Tabla: Contiene informaci&#243;n sobre las sucursales, incluyendo nombre, direcci&#243;n, responsable, cantidad de clientes atendidos, capacidad, empleados y horarios.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la sucursal.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>Nombre</td>
+    <td>VARCHAR(150)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Nombre de la sucursal.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto de hasta 150 caracteres.</td>
+</tr>
+<tr>
+    <td>Direccion</td>
+    <td>VARCHAR(250)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Direcci&#243;n de la sucursal.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto de hasta 250 caracteres.</td>
+</tr>
+<tr>
+    <td>Responsable_ID</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Identificador &#250;nico del empleado responsable de la sucursal.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de empleados.</td>
+</tr>
+<tr>
+    <td>Total_Clientes_Atendidos</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>'0'</td>
+    <td>Descripci&#243;n: Cantidad total de clientes atendidos en la sucursal.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Promedio_Clientes_X_Dia</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>'0'</td>
+    <td>Descripci&#243;n: Promedio de clientes atendidos por D&#237;a en la sucursal.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Capacidad_Maxima</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>'0'</td>
+    <td>Descripci&#243;n: Capacidad m&#225;xima de la sucursal.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Total_Empleados</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>'0'</td>
+    <td>Descripci&#243;n: Cantidad total de empleados asignados a la sucursal.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.</td>
+</tr>
+<tr>
+    <td>Horario_Disponibilidad</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Horario de disponibilidad de la sucursal.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto descriptivo del horario.</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Descripci&#243;n: Estado actual de la sucursal.\nTipo: Binario\nNaturaleza: Cualitativo\nDominio: {0, 1} (0 para inactivo, 1 para activo).</td>
+</tr>
+<table id='usuarios'>
+<caption>usuarios</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: D&#233;vil\nDescripci&#243;n de la Tabla: Almacena informaci&#243;n sobre los usuarios del sistema, incluyendo su tipo de usuario, estado de conexi&#243;n, &#250;ltima conexi&#243;n y nombre de usuario.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>Persona_ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la persona asociada al usuario.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de personas.</td>
+</tr>
+<tr>
+    <td>password</td>
+    <td>VARBINARY(256)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Contrase&#241;a del usuario (almacenada de forma cifrada).\nTipo: Binario\nNaturaleza: Cualitativo\nDominio: Cadena binaria.</td>
+</tr>
+<tr>
+    <td>Tipo</td>
+    <td>ENUM('Empleado', 'Visitante', 'Miembro', 'Instructor')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Tipo de usuario (Empleado, Visitante, Miembro, Instructor).\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Empleado, Visitante, Miembro, Instructor}</td>
+</tr>
+<tr>
+    <td>Estatus_Conexion</td>
+    <td>ENUM('Online', 'Offline', 'Banned')</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Estado de conexi&#243;n del usuario (Online, Offline, Banned).\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Online, Offline, Banned}</td>
+</tr>
+<tr>
+    <td>Ultima_Conexion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Fecha y hora de la &#250;ltima conexi&#243;n del usuario.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>username</td>
+    <td>VARCHAR(60)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Nombre de usuario del usuario.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 60 caracteres.</td>
+</tr>
+<table id='valoraciones_nutricionales'>
+<caption>valoraciones_nutricionales</caption>
+<tr><td colspan='11'>Clasificaci&#243;n del Tipo de Tabla: D&#233;vil, Derivada\nDescripci&#243;n de la Tabla: Almacena valoraciones nutricionales realizadas a usuarios, incluyendo indicadores nutricionales, valores, fecha de valoraci&#243;n, empleado que realiz&#243; la valoraci&#243;n y comentarios.</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>id</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Descripci&#243;n: Identificador &#250;nico de la valoraci&#243;n nutricional.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nComposici&#243;n: Autoincremental.</td>
+</tr>
+<tr>
+    <td>usuario_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Identificador &#250;nico del usuario al que se le realiz&#243; la valoraci&#243;n nutricional.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de usuarios.</td>
+</tr>
+<tr>
+    <td>indicador_nutricional_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Identificador &#250;nico del indicador nutricional evaluado en la valoraci&#243;n.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de indicadores nutricionales.</td>
+</tr>
+<tr>
+    <td>valor</td>
+    <td>VARCHAR(20)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripci&#243;n: Valor asignado al indicador nutricional en la valoraci&#243;n.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Cadena de texto con hasta 20 caracteres.</td>
+</tr>
+<tr>
+    <td>fecha_valoracion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Fecha y hora en que se realiz&#243; la valoraci&#243;n nutricional.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora v&#225;lidos.</td>
+</tr>
+<tr>
+    <td>empleado_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Identificador &#250;nico del empleado que realiz&#243; la valoraci&#243;n nutricional.\nTipo: Num&#233;rico (Entero)\nNaturaleza: Cuantitativo\nDominio: n&#250;meros enteros positivos.\nRestricci&#243;n: Clave for&#225;nea, se relaciona con la tabla de empleados.</td>
+</tr>
+<tr>
+    <td>comentarios</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Descripci&#243;n: Comentarios adicionales o notas sobre la valoraci&#243;n nutricional.\nTipo: AlfaNum&#233;rico\nNaturaleza: Cualitativo\nDominio: Texto de longitud variable.</td>
+</tr>
+</table>
+</body>
+</html>
