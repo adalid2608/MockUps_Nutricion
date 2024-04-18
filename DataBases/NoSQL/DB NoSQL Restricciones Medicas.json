@@ -32,9 +32,9 @@
     "alergias": [
       "Penicilina"
     ],
-    "numero_telefonico_paciente": "+52 55 1234 5678",
-    "numero_telefonico_familiar": "+52 55 8765 4321",
-    "correo_electronico_paciente": "juan.perez@example.com",
+    "numero_telefonico_paciente": "(+52) 76 1234 5678",
+    "numero_telefonico_familiar": "(+52) 76 8765 4321",
+    "correo_electronico_paciente": "juan.perez@gmail.com",
     "restricciones_medicas": [
       {
         "tipo_restriccion": "Alergia",
@@ -117,9 +117,9 @@
     "alergias": [
       "Mariscos"
     ],
-    "numero_telefonico_paciente": "+52 55 9876 5432",
-    "numero_telefonico_familiar": "+52 55 4321 9876",
-    "correo_electronico_paciente": "maria.gonzalez@example.com",
+    "numero_telefonico_paciente": "(+52) 22 9876 5432",
+    "numero_telefonico_familiar": "(+52) 22 4321 9876",
+    "correo_electronico_paciente": "maria.gonzalez@gmail.com",
     "restricciones_medicas": [
       {
         "tipo_restriccion": "Alergia",
@@ -149,6 +149,698 @@
         "frecuencia": "Cada 6 horas",
         "fecha_inicio": "2024-01-01",
         "notas_adicionales": "Para dolor de cabeza"
+      }
+    ],
+    "habitos_alimenticios": {
+      "tipo_dieta": "Vegetariana",
+      "frecuencia_comidas": "3 veces al día",
+      "preferencias": [
+        "Verduras",
+        "Frutas",
+        "Legumbres"
+      ],
+      "alimentos_evitados": [
+        "Carne",
+        "Pescado",
+        "Mariscos"
+      ],
+      "suplementos": [
+        "Vitamina B12"
+      ]
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "66214e75c723ec35f8b9542b"
+  },
+  "numero_expediente": "GYM-NUT-P0003",
+  "ficha_identificacion": {
+    "nombre_completo": {
+      "nombres": "Carlos",
+      "primer_apellido": "Hernández",
+      "segundo_apellido": "Gutiérrez"
+    },
+    "curp": {
+      "car_pa": "HE",
+      "car_sa": "G",
+      "car_n": "C",
+      "anio_n": "90",
+      "mes_n": "12",
+      "dia_n": "20",
+      "car_g": "H",
+      "car_efn": "DF",
+      "car_ipa": "H",
+      "car_isa": "R",
+      "car_in": "S",
+      "dif": "C6"
+    },
+    "fecha_nacimiento": "1990-12-20T00:00:00.000+00:00",
+    "edad": 34,
+    "genero": "Masculino",
+    "estado_civil": "Soltero",
+    "ocupacion": "Abogado",
+    "tipo_sangre": "AB+",
+    "alergias": [
+      "Polen"
+    ],
+    "numero_telefonico_paciente": "(+52) 76 1122 3344",
+    "numero_telefonico_familiar": "(+52) 76 4433 2211",
+    "correo_electronico_paciente": "carlos.hernandez@gmail.com",
+    "restricciones_medicas": [
+      {
+        "tipo_restriccion": "Alergia",
+        "descripcion": "Alergia al polen",
+        "gravedad": "Leve",
+        "fecha_diagnostico": "2010-01-01",
+        "notas_adicionales": "Reacción alérgica leve al polen",
+        "estado_restriccion": "Activa"
+      }
+    ],
+    "ejercicio_fisico": {
+      "frecuencia": "5 veces a la semana",
+      "tipo": "Pesas",
+      "duracion": "1 hora",
+      "intensidad": "Alta"
+    },
+    "dieta_actual": {
+      "tipo_dieta": "Keto",
+      "descripcion": "Dieta cetogénica",
+      "fecha_inicio": "2023-01-01",
+      "notas_adicionales": "Dieta sugerida por nutriólogo"
+    },
+    "medicamentos_actuales": [
+      {
+        "nombre_medicamento": "Loratadina",
+        "dosis": "10 mg",
+        "frecuencia": "Cada 24 horas",
+        "fecha_inicio": "2024-01-01",
+        "notas_adicionales": "Para alergia al polen"
+      }
+    ],
+    "habitos_alimenticios": {
+      "tipo_dieta": "Cetogénica",
+      "frecuencia_comidas": "3 veces al día",
+      "preferencias": [
+        "Carne",
+        "Pescado",
+        "Verduras"
+      ],
+      "alimentos_evitados": [
+        "Azúcares",
+        "Granos",
+        "Frutas"
+      ],
+      "suplementos": [
+        "Electrolitos"
+      ]
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "66214fcec723ec35f8b9542d"
+  },
+  "numero_expediente": "GYM-NUT-P0004",
+  "ficha_identificacion": {
+    "nombre_completo": {
+      "nombres": "Ana",
+      "primer_apellido": "Sánchez",
+      "segundo_apellido": "Morales"
+    },
+    "curp": {
+      "car_pa": "SA",
+      "car_sa": "M",
+      "car_n": "A",
+      "anio_n": "75",
+      "mes_n": "05",
+      "dia_n": "30",
+      "car_g": "M",
+      "car_efn": "DF",
+      "car_ipa": "S",
+      "car_isa": "R",
+      "car_in": "S",
+      "dif": "D6"
+    },
+    "fecha_nacimiento": "1975-05-30T00:00:00.000+00:00",
+    "edad": 49,
+    "genero": "Femenino",
+    "estado_civil": "Divorciada",
+    "ocupacion": "Médico",
+    "tipo_sangre": "B+",
+    "alergias": [
+      "Gluten"
+    ],
+    "numero_telefonico_paciente": "(+52) 77 5566 7788",
+    "numero_telefonico_familiar": "(+52) 77 8877 6655",
+    "correo_electronico_paciente": "ana.sanchez@gmail.com",
+    "restricciones_medicas": [
+      {
+        "tipo_restriccion": "Intolerancia alimentaria",
+        "descripcion": "Intolerancia al gluten",
+        "gravedad": "Moderada",
+        "fecha_diagnostico": "2005-01-01",
+        "notas_adicionales": "Reacción severa al gluten",
+        "estado_restriccion": "Activa"
+      }
+    ],
+    "ejercicio_fisico": {
+      "frecuencia": "2 veces a la semana",
+      "tipo": "Natación",
+      "duracion": "1 hora",
+      "intensidad": "Moderada"
+    },
+    "dieta_actual": {
+      "tipo_dieta": "Sin gluten",
+      "descripcion": "Dieta sin gluten",
+      "fecha_inicio": "2005-01-01",
+      "notas_adicionales": "Dieta sugerida por nutriólogo"
+    },
+    "medicamentos_actuales": [
+      {
+        "nombre_medicamento": "Ibuprofeno",
+        "dosis": "200 mg",
+        "frecuencia": "Cada 8 horas",
+        "fecha_inicio": "2024-01-01",
+        "notas_adicionales": "Para dolor de cabeza"
+      }
+    ],
+    "habitos_alimenticios": {
+      "tipo_dieta": "Sin gluten",
+      "frecuencia_comidas": "3 veces al día",
+      "preferencias": [
+        "Verduras",
+        "Frutas",
+        "Legumbres"
+      ],
+      "alimentos_evitados": [
+        "Pan",
+        "Pasta",
+        "Cerveza"
+      ],
+      "suplementos": [
+        "Vitamina D"
+      ]
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6621508ae705c655c5b66223"
+  },
+  "numero_expediente": "GYM-NUT-P0005",
+  "ficha_identificacion": {
+    "nombre_completo": {
+      "nombres": "Pedro",
+      "primer_apellido": "García",
+      "segundo_apellido": "Fernández"
+    },
+    "curp": {
+      "car_pa": "GA",
+      "car_sa": "F",
+      "car_n": "P",
+      "anio_n": "70",
+      "mes_n": "07",
+      "dia_n": "07",
+      "car_g": "H",
+      "car_efn": "DF",
+      "car_ipa": "G",
+      "car_isa": "R",
+      "car_in": "S",
+      "dif": "E7"
+    },
+    "fecha_nacimiento": "1970-07-07T00:00:00.000+00:00",
+    "edad": 54,
+    "genero": "Masculino",
+    "estado_civil": "Casado",
+    "ocupacion": "Contador",
+    "tipo_sangre": "A-",
+    "alergias": [
+      "Aspirina"
+    ],
+    "numero_telefonico_paciente": "(+52) 55 2233 4455",
+    "numero_telefonico_familiar": "(+52) 55 5566 7788",
+    "correo_electronico_paciente": "pedro.garcia@gmail.com",
+    "restricciones_medicas": [
+      {
+        "tipo_restriccion": "Alergia",
+        "descripcion": "Alergia a la aspirina",
+        "gravedad": "Moderada",
+        "fecha_diagnostico": "2000-01-01",
+        "notas_adicionales": "Reacción alérgica moderada a la aspirina",
+        "estado_restriccion": "Activa"
+      }
+    ],
+    "ejercicio_fisico": {
+      "frecuencia": "2 veces a la semana",
+      "tipo": "Caminar",
+      "duracion": "30 minutos",
+      "intensidad": "Baja"
+    },
+    "dieta_actual": {
+      "tipo_dieta": "Mediterránea",
+      "descripcion": "Dieta mediterránea",
+      "fecha_inicio": "2022-01-01",
+      "notas_adicionales": "Dieta sugerida por nutriólogo"
+    },
+    "medicamentos_actuales": [
+      {
+        "nombre_medicamento": "Paracetamol",
+        "dosis": "500 mg",
+        "frecuencia": "Cada 8 horas",
+        "fecha_inicio": "2024-01-01",
+        "notas_adicionales": "Para dolor de cabeza"
+      }
+    ],
+    "habitos_alimenticios": {
+      "tipo_dieta": "Mediterránea",
+      "frecuencia_comidas": "3 veces al día",
+      "preferencias": [
+        "Pescado",
+        "Frutas",
+        "Verduras"
+      ],
+      "alimentos_evitados": [
+        "Carne roja",
+        "Azúcares"
+      ],
+      "suplementos": [
+        "Omega 3"
+      ]
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "66215161e705c655c5b66225"
+  },
+  "numero_expediente": "GYM-NUT-P0006",
+  "ficha_identificacion": {
+    "nombre_completo": {
+      "nombres": "Laura",
+      "primer_apellido": "Rodríguez",
+      "segundo_apellido": "Pérez"
+    },
+    "curp": {
+      "car_pa": "RO",
+      "car_sa": "P",
+      "car_n": "L",
+      "anio_n": "85",
+      "mes_n": "03",
+      "dia_n": "25",
+      "car_g": "M",
+      "car_efn": "DF",
+      "car_ipa": "R",
+      "car_isa": "R",
+      "car_in": "S",
+      "dif": "F7"
+    },
+    "fecha_nacimiento": "1985-03-25T00:00:00.000+00:00",
+    "edad": 39,
+    "genero": "Femenino",
+    "estado_civil": "Soltera",
+    "ocupacion": "Diseñadora",
+    "tipo_sangre": "B+",
+    "alergias": [
+      "Nueces"
+    ],
+    "numero_telefonico_paciente": "(+52) 55 3344 5566",
+    "numero_telefonico_familiar": "(+52) 55 6677 8899",
+    "correo_electronico_paciente": "laura.rodriguez@gmail.com",
+    "restricciones_medicas": [
+      {
+        "tipo_restriccion": "Alergia",
+        "descripcion": "Alergia a las nueces",
+        "gravedad": "Severa",
+        "fecha_diagnostico": "2005-01-01",
+        "notas_adicionales": "Reacción alérgica severa a las nueces",
+        "estado_restriccion": "Activa"
+      }
+    ],
+    "ejercicio_fisico": {
+      "frecuencia": "4 veces a la semana",
+      "tipo": "Pilates",
+      "duracion": "1 hora",
+      "intensidad": "Moderada"
+    },
+    "dieta_actual": {
+      "tipo_dieta": "Vegana",
+      "descripcion": "Dieta vegana",
+      "fecha_inicio": "2018-01-01",
+      "notas_adicionales": "Dieta sugerida por nutriólogo"
+    },
+    "medicamentos_actuales": [
+      {
+        "nombre_medicamento": "Loratadina",
+        "dosis": "10 mg",
+        "frecuencia": "Cada 24 horas",
+        "fecha_inicio": "2024-01-01",
+        "notas_adicionales": "Para alergia a las nueces"
+      }
+    ],
+    "habitos_alimenticios": {
+      "tipo_dieta": "Vegana",
+      "frecuencia_comidas": "3 veces al día",
+      "preferencias": [
+        "Verduras",
+        "Frutas",
+        "Legumbres"
+      ],
+      "alimentos_evitados": [
+        "Carne",
+        "Pescado",
+        "Lácteos",
+        "Nueces"
+      ],
+      "suplementos": [
+        "Vitamina B12"
+      ]
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "662152b5e705c655c5b66227"
+  },
+  "numero_expediente": "GYM-NUT-P0007",
+  "ficha_identificacion": {
+    "nombre_completo": {
+      "nombres": "Roberto",
+      "primer_apellido": "Vargas",
+      "segundo_apellido": "Mendoza"
+    },
+    "curp": {
+      "car_pa": "VA",
+      "car_sa": "M",
+      "car_n": "R",
+      "anio_n": "80",
+      "mes_n": "08",
+      "dia_n": "08",
+      "car_g": "H",
+      "car_efn": "DF",
+      "car_ipa": "V",
+      "car_isa": "R",
+      "car_in": "S",
+      "dif": "G8"
+    },
+    "fecha_nacimiento": "1980-08-08T00:00:00.000+00:00",
+    "edad": 44,
+    "genero": "Masculino",
+    "estado_civil": "Casado",
+    "ocupacion": "Arquitecto",
+    "tipo_sangre": "O-",
+    "alergias": [
+      "Penicilina"
+    ],
+    "numero_telefonico_paciente": "(+52) 10 4455 6677",
+    "numero_telefonico_familiar": "(+52) 10 7788 9900",
+    "correo_electronico_paciente": "roberto.vargas@gmail.com",
+    "restricciones_medicas": [
+      {
+        "tipo_restriccion": "Alergia",
+        "descripcion": "Alergia a la penicilina",
+        "gravedad": "Severa",
+        "fecha_diagnostico": "2000-01-01",
+        "notas_adicionales": "Reacción alérgica severa a la penicilina",
+        "estado_restriccion": "Activa"
+      }
+    ],
+    "ejercicio_fisico": {
+      "frecuencia": "5 veces a la semana",
+      "tipo": "Ciclismo",
+      "duracion": "1 hora",
+      "intensidad": "Alta"
+    },
+    "dieta_actual": {
+      "tipo_dieta": "Balanceada",
+      "descripcion": "Dieta balanceada con énfasis en proteínas",
+      "fecha_inicio": "2022-01-01",
+      "notas_adicionales": "Dieta sugerida por nutriólogo"
+    },
+    "medicamentos_actuales": [
+      {
+        "nombre_medicamento": "Ibuprofeno",
+        "dosis": "200 mg",
+        "frecuencia": "Cada 8 horas",
+        "fecha_inicio": "2024-01-01",
+        "notas_adicionales": "Para dolor de cabeza"
+      }
+    ],
+    "habitos_alimenticios": {
+      "tipo_dieta": "Omnívora",
+      "frecuencia_comidas": "3 veces al día",
+      "preferencias": [
+        "Carne",
+        "Verduras",
+        "Frutas"
+      ],
+      "alimentos_evitados": [
+        "Azúcares"
+      ],
+      "suplementos": [
+        "Vitamina D"
+      ]
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "662152e1e705c655c5b66229"
+  },
+  "numero_expediente": "GYM-NUT-P0008",
+  "ficha_identificacion": {
+    "nombre_completo": {
+      "nombres": "Sofía",
+      "primer_apellido": "Martínez",
+      "segundo_apellido": "Gómez"
+    },
+    "curp": {
+      "car_pa": "MA",
+      "car_sa": "G",
+      "car_n": "S",
+      "anio_n": "90",
+      "mes_n": "09",
+      "dia_n": "09",
+      "car_g": "M",
+      "car_efn": "DF",
+      "car_ipa": "M",
+      "car_isa": "R",
+      "car_in": "S",
+      "dif": "H9"
+    },
+    "fecha_nacimiento": "1990-09-09T00:00:00.000+00:00",
+    "edad": 34,
+    "genero": "Femenino",
+    "estado_civil": "Soltera",
+    "ocupacion": "Psicóloga",
+    "tipo_sangre": "AB+",
+    "alergias": [
+      "Látex"
+    ],
+    "numero_telefonico_paciente": "(+52) 22 6677 8899",
+    "numero_telefonico_familiar": "(+52) 22 9988 7766",
+    "correo_electronico_paciente": "sofia.martinez@gmail.com",
+    "restricciones_medicas": [
+      {
+        "tipo_restriccion": "Alergia",
+        "descripcion": "Alergia al látex",
+        "gravedad": "Moderada",
+        "fecha_diagnostico": "2010-01-01",
+        "notas_adicionales": "Reacción alérgica moderada al látex",
+        "estado_restriccion": "Activa"
+      }
+    ],
+    "ejercicio_fisico": {
+      "frecuencia": "3 veces a la semana",
+      "tipo": "Yoga",
+      "duracion": "1 hora",
+      "intensidad": "Baja"
+    },
+    "dieta_actual": {
+      "tipo_dieta": "Vegetariana",
+      "descripcion": "Dieta vegetariana",
+      "fecha_inicio": "2020-01-01",
+      "notas_adicionales": "Dieta sugerida por nutriólogo"
+    },
+    "medicamentos_actuales": [
+      {
+        "nombre_medicamento": "Paracetamol",
+        "dosis": "500 mg",
+        "frecuencia": "Cada 8 horas",
+        "fecha_inicio": "2024-01-01",
+        "notas_adicionales": "Para dolor de cabeza"
+      }
+    ],
+    "habitos_alimenticios": {
+      "tipo_dieta": "Vegetariana",
+      "frecuencia_comidas": "3 veces al día",
+      "preferencias": [
+        "Verduras",
+        "Frutas",
+        "Legumbres"
+      ],
+      "alimentos_evitados": [
+        "Carne",
+        "Pescado"
+      ],
+      "suplementos": [
+        "Vitamina B12"
+      ]
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "66215310e705c655c5b6622b"
+  },
+  "numero_expediente": "GYM-NUT-P0009",
+  "ficha_identificacion": {
+    "nombre_completo": {
+      "nombres": "Javier",
+      "primer_apellido": "López",
+      "segundo_apellido": "Hernández"
+    },
+    "curp": {
+      "car_pa": "LO",
+      "car_sa": "H",
+      "car_n": "J",
+      "anio_n": "85",
+      "mes_n": "04",
+      "dia_n": "15",
+      "car_g": "H",
+      "car_efn": "DF",
+      "car_ipa": "L",
+      "car_isa": "R",
+      "car_in": "S",
+      "dif": "I8"
+    },
+    "fecha_nacimiento": "1985-04-15T00:00:00.000+00:00",
+    "edad": 39,
+    "genero": "Masculino",
+    "estado_civil": "Casado",
+    "ocupacion": "Ingeniero",
+    "tipo_sangre": "A+",
+    "alergias": [
+      "Polvo"
+    ],
+    "numero_telefonico_paciente": "(+52) 55 7788 9900",
+    "numero_telefonico_familiar": "(+52) 55 6677 8899",
+    "correo_electronico_paciente": "javier.lopez@gmail.com",
+    "restricciones_medicas": [
+      {
+        "tipo_restriccion": "Alergia",
+        "descripcion": "Alergia al polvo",
+        "gravedad": "Leve",
+        "fecha_diagnostico": "2005-01-01",
+        "notas_adicionales": "Reacción alérgica leve al polvo",
+        "estado_restriccion": "Activa"
+      }
+    ],
+    "ejercicio_fisico": {
+      "frecuencia": "5 veces a la semana",
+      "tipo": "Fútbol",
+      "duracion": "1 hora",
+      "intensidad": "Alta"
+    },
+    "dieta_actual": {
+      "tipo_dieta": "Mediterránea",
+      "descripcion": "Dieta mediterránea",
+      "fecha_inicio": "2022-01-01",
+      "notas_adicionales": "Dieta sugerida por nutriólogo"
+    },
+    "medicamentos_actuales": [
+      {
+        "nombre_medicamento": "Paracetamol",
+        "dosis": "500 mg",
+        "frecuencia": "Cada 8 horas",
+        "fecha_inicio": "2024-01-01",
+        "notas_adicionales": "Para dolor de cabeza"
+      }
+    ],
+    "habitos_alimenticios": {
+      "tipo_dieta": "Mediterránea",
+      "frecuencia_comidas": "3 veces al día",
+      "preferencias": [
+        "Pescado",
+        "Frutas",
+        "Verduras"
+      ],
+      "alimentos_evitados": [
+        "Carne roja",
+        "Azúcares"
+      ],
+      "suplementos": [
+        "Omega 3"
+      ]
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "662153fbe705c655c5b6622d"
+  },
+  "numero_expediente": "GYM-NUT-P0010",
+  "ficha_identificacion": {
+    "nombre_completo": {
+      "nombres": "Fernanda",
+      "primer_apellido": "Ramírez",
+      "segundo_apellido": "Sánchez"
+    },
+    "curp": {
+      "car_pa": "RA",
+      "car_sa": "S",
+      "car_n": "F",
+      "anio_n": "95",
+      "mes_n": "05",
+      "dia_n": "20",
+      "car_g": "M",
+      "car_efn": "DF",
+      "car_ipa": "R",
+      "car_isa": "R",
+      "car_in": "S",
+      "dif": "J9"
+    },
+    "fecha_nacimiento": "1995-05-20T00:00:00.000+00:00",
+    "edad": 29,
+    "genero": "Femenino",
+    "estado_civil": "Soltera",
+    "ocupacion": "Artista",
+    "tipo_sangre": "O-",
+    "alergias": [
+      "Mariscos"
+    ],
+    "numero_telefonico_paciente": "(+52) 55 8899 7766",
+    "numero_telefonico_familiar": "(+52) 55 6655 4433",
+    "correo_electronico_paciente": "fernanda.ramirez@gmail.com",
+    "restricciones_medicas": [
+      {
+        "tipo_restriccion": "Alergia",
+        "descripcion": "Alergia a los mariscos",
+        "gravedad": "Severa",
+        "fecha_diagnostico": "2010-01-01",
+        "notas_adicionales": "Reacción alérgica severa a los mariscos",
+        "estado_restriccion": "Activa"
+      }
+    ],
+    "ejercicio_fisico": {
+      "frecuencia": "3 veces a la semana",
+      "tipo": "Danza",
+      "duracion": "2 horas",
+      "intensidad": "Alta"
+    },
+    "dieta_actual": {
+      "tipo_dieta": "Vegetariana",
+      "descripcion": "Dieta vegetariana",
+      "fecha_inicio": "2020-01-01",
+      "notas_adicionales": "Dieta sugerida por nutriólogo"
+    },
+    "medicamentos_actuales": [
+      {
+        "nombre_medicamento": "Loratadina",
+        "dosis": "10 mg",
+        "frecuencia": "Cada 24 horas",
+        "fecha_inicio": "2024-01-01",
+        "notas_adicionales": "Para alergia a los mariscos"
       }
     ],
     "habitos_alimenticios": {
