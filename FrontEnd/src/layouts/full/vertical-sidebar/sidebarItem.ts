@@ -93,7 +93,7 @@ const sidebarItem: menu[] = [
     to: '/dashboards/nutricion/',
     children: [
       {
-        title: 'Evaluación Nutricional',
+        title: 'Planes Nutricionales',
         icon: CircleDotIcon,
         to: '/dashboards/nutricion/evaluacion-nutricional'
       },
@@ -106,6 +106,24 @@ const sidebarItem: menu[] = [
         title: 'Dashboard',
         icon: CircleDotIcon,
         to: '/dashboards/nutricion/dashboard-nutricion'
+      }
+    ]
+  },
+
+  {
+    title: 'Nutrición Usuario',
+    icon: BasketIcon,
+    to: '/dashboards/nutricion-usr/',
+    children: [
+      {
+        title: 'Dietas',
+        icon: CircleDotIcon,
+        to: '/dashboards/nutricion-usr/dietas-usr'
+      },
+      {
+        title: 'Dashboard',
+        icon: CircleDotIcon,
+        to: '/dashboards/nutricion-usr/evaluacion-usr'
       }
     ]
   },
