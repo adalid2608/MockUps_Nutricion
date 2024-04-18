@@ -301,7 +301,7 @@
         "gravedad": "Moderada",
         "fecha_diagnostico": "2005-01-01",
         "notas_adicionales": "Reacción severa al gluten",
-        "estado_restriccion": "Activa"
+        "estado_restriccion": "Inactiva"
       }
     ],
     "ejercicio_fisico": {
@@ -647,7 +647,7 @@
         "gravedad": "Moderada",
         "fecha_diagnostico": "2010-01-01",
         "notas_adicionales": "Reacción alérgica moderada al látex",
-        "estado_restriccion": "Activa"
+        "estado_restriccion": "Inactiva"
       }
     ],
     "ejercicio_fisico": {
@@ -819,7 +819,7 @@
         "gravedad": "Severa",
         "fecha_diagnostico": "2010-01-01",
         "notas_adicionales": "Reacción alérgica severa a los mariscos",
-        "estado_restriccion": "Activa"
+        "estado_restriccion": "Inactiva"
       }
     ],
     "ejercicio_fisico": {
