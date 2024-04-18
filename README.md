@@ -8,7 +8,7 @@
 
 ***
 
-# Perfiles de Gihub de los Integrantes del Equipo de trabajo
+# Perfiles de Github de los Integrantes del Equipo
 - [@Aldair-NPM](https://www.github.com/Aldair-NPM)
 - [@EmilioMendozaCortes](https://www.github.com/EmilioMendozaCortes)
 - [@adalid2608](https://www.github.com/adalid2608)
