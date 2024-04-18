@@ -1,0 +1,172 @@
+[{
+  "_id": {
+    "$oid": "66214bd2c723ec35f8b95425"
+  },
+  "numero_expediente": "GYM-NUT-P0001",
+  "ficha_identificacion": {
+    "nombre_completo": {
+      "nombres": "Juan",
+      "primer_apellido": "Pérez",
+      "segundo_apellido": "López"
+    },
+    "curp": {
+      "car_pa": "PE",
+      "car_sa": "L",
+      "car_n": "J",
+      "anio_n": "80",
+      "mes_n": "01",
+      "dia_n": "01",
+      "car_g": "H",
+      "car_efn": "DF",
+      "car_ipa": "P",
+      "car_isa": "R",
+      "car_in": "S",
+      "dif": "A5"
+    },
+    "fecha_nacimiento": "1980-01-01T00:00:00.000+00:00",
+    "edad": 44,
+    "genero": "Masculino",
+    "estado_civil": "Casado",
+    "ocupacion": "Ingeniero",
+    "tipo_sangre": "O+",
+    "alergias": [
+      "Penicilina"
+    ],
+    "numero_telefonico_paciente": "+52 55 1234 5678",
+    "numero_telefonico_familiar": "+52 55 8765 4321",
+    "correo_electronico_paciente": "juan.perez@example.com",
+    "restricciones_medicas": [
+      {
+        "tipo_restriccion": "Alergia",
+        "descripcion": "Alergia a la penicilina",
+        "gravedad": "Moderada",
+        "fecha_diagnostico": "2000-01-01",
+        "notas_adicionales": "Reacción alérgica severa a la penicilina",
+        "estado_restriccion": "Activa"
+      }
+    ],
+    "ejercicio_fisico": {
+      "frecuencia": "Diario",
+      "tipo": "Correr",
+      "duracion": "30 minutos",
+      "intensidad": "Moderada"
+    },
+    "dieta_actual": {
+      "tipo_dieta": "Balanceada",
+      "descripcion": "Dieta balanceada con énfasis en proteínas",
+      "fecha_inicio": "2022-01-01",
+      "notas_adicionales": "Dieta sugerida por nutriólogo"
+    },
+    "medicamentos_actuales": [
+      {
+        "nombre_medicamento": "Ibuprofeno",
+        "dosis": "200 mg",
+        "frecuencia": "Cada 8 horas",
+        "fecha_inicio": "2024-01-01",
+        "notas_adicionales": "Para dolor de cabeza"
+      }
+    ],
+    "habitos_alimenticios": {
+      "tipo_dieta": "Omnívora",
+      "frecuencia_comidas": "3 veces al día",
+      "preferencias": [
+        "Carne",
+        "Verduras",
+        "Frutas"
+      ],
+      "alimentos_evitados": [
+        "Lácteos"
+      ],
+      "suplementos": [
+        "Vitamina D"
+      ]
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "66214d5fc723ec35f8b95429"
+  },
+  "numero_expediente": "GYM-NUT-P0002",
+  "ficha_identificacion": {
+    "nombre_completo": {
+      "nombres": "María",
+      "primer_apellido": "González",
+      "segundo_apellido": "Ramírez"
+    },
+    "curp": {
+      "car_pa": "GO",
+      "car_sa": "R",
+      "car_n": "M",
+      "anio_n": "85",
+      "mes_n": "06",
+      "dia_n": "15",
+      "car_g": "M",
+      "car_efn": "DF",
+      "car_ipa": "G",
+      "car_isa": "R",
+      "car_in": "S",
+      "dif": "B6"
+    },
+    "fecha_nacimiento": "1985-06-15T00:00:00.000+00:00",
+    "edad": 39,
+    "genero": "Femenino",
+    "estado_civil": "Casada",
+    "ocupacion": "Profesora",
+    "tipo_sangre": "A-",
+    "alergias": [
+      "Mariscos"
+    ],
+    "numero_telefonico_paciente": "+52 55 9876 5432",
+    "numero_telefonico_familiar": "+52 55 4321 9876",
+    "correo_electronico_paciente": "maria.gonzalez@example.com",
+    "restricciones_medicas": [
+      {
+        "tipo_restriccion": "Alergia",
+        "descripcion": "Alergia a los mariscos",
+        "gravedad": "Severa",
+        "fecha_diagnostico": "2005-01-01",
+        "notas_adicionales": "Reacción alérgica severa a los mariscos",
+        "estado_restriccion": "Activa"
+      }
+    ],
+    "ejercicio_fisico": {
+      "frecuencia": "3 veces a la semana",
+      "tipo": "Yoga",
+      "duracion": "1 hora",
+      "intensidad": "Baja"
+    },
+    "dieta_actual": {
+      "tipo_dieta": "Vegetariana",
+      "descripcion": "Dieta vegetariana estricta",
+      "fecha_inicio": "2010-01-01",
+      "notas_adicionales": "Dieta sugerida por nutriólogo"
+    },
+    "medicamentos_actuales": [
+      {
+        "nombre_medicamento": "Paracetamol",
+        "dosis": "500 mg",
+        "frecuencia": "Cada 6 horas",
+        "fecha_inicio": "2024-01-01",
+        "notas_adicionales": "Para dolor de cabeza"
+      }
+    ],
+    "habitos_alimenticios": {
+      "tipo_dieta": "Vegetariana",
+      "frecuencia_comidas": "3 veces al día",
+      "preferencias": [
+        "Verduras",
+        "Frutas",
+        "Legumbres"
+      ],
+      "alimentos_evitados": [
+        "Carne",
+        "Pescado",
+        "Mariscos"
+      ],
+      "suplementos": [
+        "Vitamina B12"
+      ]
+    }
+  }
+}]
