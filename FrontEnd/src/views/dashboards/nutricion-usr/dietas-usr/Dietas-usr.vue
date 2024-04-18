@@ -1,40 +1,98 @@
-<script setup>
-import { ref } from 'vue';
-import BaseBreadcrumb from '@/components/shared/BaseBreadcrumb.vue';
-import UiParentCard from '@/components/shared/UiParentCard.vue';
-import { BasicDatatables } from '@/_mockApis/components/datatable/dataTable';
-
-const page = ref({ title: 'Seguimiento de Dietas' });
-const breadcrumbs = ref([
-    {
-        text: 'Dietas',
-        disabled: false,
-        href: '#'
-    },
-    {
-        text: 'Seguimiento',
-        disabled: true,
-        href: '#'
-    }
-]);
-
-
-
-
+<script setup lang="ts">
+import { productsCard } from '@/_mockApis/components/widget/card';
 </script>
 <template>
-    <BaseBreadcrumb :title="page.title" :breadcrumbs="breadcrumbs"></BaseBreadcrumb>
     <v-row>
-        <v-col cols="12">
-            <UiParentCard title="Dietas Asignadas">
-                <v-data-table items-per-page="5"  :items="BasicDatatables" item-value="Usuario"
-                    class="border rounded-md">
-                    <template v-slot:column.name="{ column }">
-                        {{ column.title.toUpperCase() }}
-                    </template>
-                </v-data-table>
-            </UiParentCard>
+        <v-col cols="12" lg="3" sm="6" v-for="card in productsCard" :key="card.title">
+            <v-card elevation="10"  rounded="md">
+                <RouterLink :to="card.link">
+                    <v-img :src="card.photo" height="100%" class="rounded-t-md"></v-img>
+                </RouterLink>
+                <div class="d-flex justify-end mr-3 mt-n3">
+                    <v-btn size="30" icon variant="flat" class="bg-primary d-flex">
+                        <v-avatar size="30" class="text-white">
+                            <BasketIcon size="17" />
+                        </v-avatar>
+                        <v-tooltip
+                            activator="parent"
+                            location="bottom"
+                        >Add To Cart
+                        </v-tooltip>
+                    </v-btn>
+                </div>
+                <v-card-item class="pt-0">
+                    <h6 class="text-h6" v-text="card.title"></h6>
+                    <div class="d-flex align-center justify-space-between mt-1">
+                        <div>
+                            <span class="text-h6" v-text="'$'+ card.price"></span>
+                            <span class="text-body-1 ml-2 text-medium-emphasis text-decoration-line-through" v-text="'$'+ card.salesPrice"></span>
+                        </div>
+                        <v-rating density="compact" color="warning" size="small" v-model="card.rating" readonly></v-rating>
+                    </div>
+                </v-card-item>
+            </v-card>
+        </v-col>
+    </v-row>
+    <v-row>
+        <v-col cols="12" lg="3" sm="6" v-for="card in productsCard" :key="card.title">
+            <v-card elevation="10"  rounded="md">
+                <RouterLink :to="card.link">
+                    <v-img :src="card.photo" height="100%" class="rounded-t-md"></v-img>
+                </RouterLink>
+                <div class="d-flex justify-end mr-3 mt-n3">
+                    <v-btn size="30" icon variant="flat" class="bg-primary d-flex">
+                        <v-avatar size="30" class="text-white">
+                            <BasketIcon size="17" />
+                        </v-avatar>
+                        <v-tooltip
+                            activator="parent"
+                            location="bottom"
+                        >Add To Cart
+                        </v-tooltip>
+                    </v-btn>
+                </div>
+                <v-card-item class="pt-0">
+                    <h6 class="text-h6" v-text="card.title"></h6>
+                    <div class="d-flex align-center justify-space-between mt-1">
+                        <div>
+                            <span class="text-h6" v-text="'$'+ card.price"></span>
+                            <span class="text-body-1 ml-2 text-medium-emphasis text-decoration-line-through" v-text="'$'+ card.salesPrice"></span>
+                        </div>
+                        <v-rating density="compact" color="warning" size="small" v-model="card.rating" readonly></v-rating>
+                    </div>
+                </v-card-item>
+            </v-card>
+        </v-col>
+    </v-row>
+    <v-row>
+        <v-col cols="12" lg="3" sm="6" v-for="card in productsCard" :key="card.title">
+            <v-card elevation="10"  rounded="md">
+                <RouterLink :to="card.link">
+                    <v-img :src="card.photo" height="100%" class="rounded-t-md"></v-img>
+                </RouterLink>
+                <div class="d-flex justify-end mr-3 mt-n3">
+                    <v-btn size="30" icon variant="flat" class="bg-primary d-flex">
+                        <v-avatar size="30" class="text-white">
+                            <BasketIcon size="17" />
+                        </v-avatar>
+                        <v-tooltip
+                            activator="parent"
+                            location="bottom"
+                        >Add To Cart
+                        </v-tooltip>
+                    </v-btn>
+                </div>
+                <v-card-item class="pt-0">
+                    <h6 class="text-h6" v-text="card.title"></h6>
+                    <div class="d-flex align-center justify-space-between mt-1">
+                        <div>
+                            <span class="text-h6" v-text="'$'+ card.price"></span>
+                            <span class="text-body-1 ml-2 text-medium-emphasis text-decoration-line-through" v-text="'$'+ card.salesPrice"></span>
+                        </div>
+                        <v-rating density="compact" color="warning" size="small" v-model="card.rating" readonly></v-rating>
+                    </div>
+                </v-card-item>
+            </v-card>
         </v-col>
     </v-row>
 </template>
-  
