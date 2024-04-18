@@ -121,7 +121,7 @@ const sidebarItem: menu[] = [
         to: '/dashboards/nutricion-usr/dietas-usr'
       },
       {
-        title: 'Dashboard',
+        title: 'Evaluación',
         icon: CircleDotIcon,
         to: '/dashboards/nutricion-usr/evaluacion-usr'
       }
