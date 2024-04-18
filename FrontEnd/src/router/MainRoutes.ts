@@ -39,6 +39,19 @@ const MainRoutes = {
             path: '/dashboards/nutricion/dashboard-nutricion',
             component: () => import('@/views/dashboards/nutricion/dashboard-nutricion/Dashboard-nutricion.vue'),
         },
+        
+        //Rutas del modulo de nutrición-usr
+        {
+            path: '/dashboards/nutricion-usr/dietas-usr',
+            component: () => import('@/views/dashboards/nutricion-usr/dietas-usr/Dietas-usr.vue'),
+        },
+        {
+            path: '/dashboards/nutricion-usr/evaluacion-usr',
+            component: () => import('@/views/dashboards/nutricion-usr/evaluacion-usr/Evaluacion-usr.vue'),
+        },
+
+
+
 
 
         {
