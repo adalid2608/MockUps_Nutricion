@@ -19,7 +19,7 @@ const radialBarchartOptions = computed(() => {
     return {
         chart: {
             type: 'radialBar',
-            height: 300,
+            height: 500,
             fontFamily: `inherit`,
             foreColor: '#adb0bb',
             toolbar: {
@@ -57,7 +57,7 @@ const radarOptions = computed(() => {
     return {
         chart: {
             type: 'radar',
-            height: 300,
+            height: 500,
             fontFamily: `inherit`,
              toolbar: {
                     show: false,
@@ -82,7 +82,7 @@ const radarChart = {
     <v-row>
         <v-col cols="12">
             <v-row>
-                <v-col cols="12" lg="6">
+                <v-col cols="12" lg="12">
                     <!-- ---------------------------------------------------- -->
                     <!-- Radialbar Chart -->
                     <!-- ---------------------------------------------------- -->
@@ -91,7 +91,7 @@ const radarChart = {
                         </apexchart>
                     </UiChildCard>
                 </v-col>
-                <v-col cols="12" lg="6">
+                <v-col cols="12" lg="12">
                     <!-- ---------------------------------------------------- -->
                     <!-- Radar Chart -->
                     <!-- ---------------------------------------------------- -->
