@@ -93,4 +93,4 @@ bienestar de los usuarios.
 - RN20. Regla de comunicación: El gimnasio debe proporcionar canales de comunicación claros para que los clientes puedan hacer preguntas, plantear inquietudes o brindar comentarios sobre su experiencia.
 
 # Modelo de la base de datos SQL: 
-  ![Modelo de la base de datos SQL](https://github.com/adalid2608/MockUps_Nutricion/blob/master/img/DiagramaSQL.png)
+  ![Modelo de la base de datos SQL](https://github.com/adalid2608/MockUps_Nutricion/blob/master/img/SQLDiagramaNutricion.png)
