@@ -587,6 +587,444 @@ END
     );
 END
 
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_genera_bandera_porcentaje`(porcentaje int) RETURNS tinyint(1)
+        DETERMINISTIC
+    BEGIN
+        DECLARE num_generado int default 0;
+        DECLARE bandera BOOLEAN;
+        set num_generado = fn_numero_aleatorio_rangos(0, 100);
+        
+        if  num_generado <= porcentaje then
+            set bandera = true;
+        else 
+            set bandera = false;
+        end if;
+    return bandera;
+    END
+                    
+    '''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_numero_aleatorio_rangos`(v_limite_inferior int, v_limite_superior int) RETURNS int
+        DETERMINISTIC
+    BEGIN	
+        declare v_numero_generado INT 
+        default floor(Rand()* (v_limite_superior - v_limite_inferior + 1) + v_limite_inferior);
+        SET @numero_generado = v_numero_generado;
+    RETURN v_numero_generado;
+    END
+
+    '''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_genera_titulo_cortesia`(v_genero CHAR(1) ) RETURNS varchar(20) CHARSET utf8mb4
+        DETERMINISTIC
+    BEGIN
+    -- función de insertar personas
+        declare  v_titulo varchar(20) default null;
+        
+        if v_genero = 'M' then
+            set v_titulo = ELT(fn_numero_aleatorio_rangos(1,10), 
+            "Ing.","Sr.", "Joven","Mtro.","Lic.",
+            "Med.", "Sgto.", "Tnte.", "C.", "C.P.");
+        else
+            set v_titulo = ELT(fn_numero_aleatorio_rangos(1,10), 
+            "Sra.","Srita", "Dra.","Mtra","Med.",
+            "Ing.", "Lic.", "C.", "C.P.", "Pfra");
+        end if;
+        
+
+    RETURN v_titulo;
+    END
+
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_genera_nombre`(v_genero CHAR(1)) RETURNS varchar(60) CHARSET utf8mb4
+        DETERMINISTIC
+    BEGIN
+        DECLARE v_nombre_generado varchar(60) default null; 
+        if v_genero = 'M' THEN 
+            SET v_nombre_generado = ELT (fn_numero_aleatorio_rangos(1,25),
+            "Marco","Juan", "Pedro", "Alejandro","Agustin",
+            "Ricardo","Gustavo", "Gerardo", "Hugo","Adalid",
+            "Mario","Jesus","Yair", "Adan","Maximiliano",
+            "Aldair","José","Edgar", "Jorge","Iram",
+            "Carlos","Federico","Fernando","Samuel","Daniel");
+        else
+            SET v_nombre_generado = ELT (fn_numero_aleatorio_rangos(1,25),
+            "Lorena","Maria","Luz", "Dulce","Suri",
+            "Ameli","Ana","Karla","Carmen","Alondra",
+            "Bertha", "Diana","Jazmin","Hortencia", "Guadalupe",
+            "Estrella","Monica", "Paola","Brenda", "Flor",
+            "Lucía","Sofia","Paula","Valeria","Esmeralda");
+        END IF;
+    RETURN v_nombre_generado;
+    END
+
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_genera_Apellido`() RETURNS varchar(60) CHARSET utf8mb4
+        DETERMINISTIC
+    BEGIN
+        DECLARE v_apellido_generado varchar(60) default null; 
+        SET v_apellido_generado = ELT (fn_numero_aleatorio_rangos(1,50),
+        "Hernández","García", "Martínez", "López"," González",
+        "Pérez","Rodríguez", "Sánchez", "Ramírez","Cruz",
+        "Cortes","Gómes","Morales", "Vázquez","Reyes",
+        "Jiménez","Torres","Díaz", "Gutiérrez","Ruíz",
+        "Mendoza","Aguilar","Ortiz","Moreno","Castillo",
+        "Romero","Álvarez", "Méndez", "Chávez"," Rivera",
+        "Juárez","Ramos", "Domínguez", "Herrera","Medina",
+        "Castro","Vargas","Guzmán", "Velázquez","De la Cruz",
+        "Contreras","Salazar","Luna", "Ortega","Santiago",
+        "Guerrero","Estrada","Bautista","Cortés","Soto");
+    RETURN v_apellido_generado;
+    RETURN 1;
+    END
+
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_genera_fecha_nacimiento`(fecha_inicio date, fecha_fin date) RETURNS date
+        DETERMINISTIC
+    BEGIN
+        DECLARE min_dias INT;
+        DECLARE max_dias INT;
+        DECLARE dias_aleatorios INT;
+        DECLARE fecha_aleatoria DATE;
+        
+        set min_dias = datediff(fecha_inicio, '1900-01-01');
+        set max_dias = datediff(fecha_fin, '1900-01-01');
+        set dias_aleatorios = fn_numero_aleatorio_rangos(min_dias, max_dias);
+        set fecha_aleatoria = date_add( '1900-01-01', interval dias_aleatorios DAY);
+    RETURN fecha_aleatoria;
+    END
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_genera_sangre`() RETURNS varchar(10) CHARSET utf8mb4
+        DETERMINISTIC
+    BEGIN
+        DECLARE v_sangre_generado varchar(10) default null; 
+        SET v_sangre_generado = ELT (fn_numero_aleatorio_rangos(1,8),
+        "A+","A-","B+","B-","AB+","AB-","O+","O-");
+    RETURN v_sangre_generado;
+    END
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_genera_fecha_registro`(fechaInicio date, fechaFin date, horaInicio time, horaFin time) RETURNS datetime
+        DETERMINISTIC
+    BEGIN
+        DECLARE fechaAleatoria DATE;
+        DECLARE horaEntrada time;
+        DECLARE horaSalida time;   
+        DECLARE horaRegistro time;
+        DECLARE fechaHoraGenerada datetime;
+        
+        SET fechaAleatoria = date_add(fechaInicio, INTERVAL floor(rand() * (datediff(fechaFin, fechaInicio) + 1)) DAY);
+        
+        SET horaRegistro = addtime(horaInicio, SEC_TO_TIME(FLOOR(RAND() * TIME_TO_SEC(TIMEDIFF(horaFin, horaInicio)))));
+        
+        set fechaHoraGenerada = concat(fechaAleatoria, " ", horaRegistro);
+    RETURN fechaHoraGenerada;
+    END
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_numero_aleatorio_decimal`(v_limite_inferior decimal(5,2), v_limite_superior decimal(5,2)) RETURNS decimal(5,2)
+    DETERMINISTIC
+BEGIN	
+	declare v_numero_generado decimal(5,2) 
+    default (Rand()* (v_limite_superior - v_limite_inferior) + v_limite_inferior);
+    SET @numero_generado = v_numero_generado;
+RETURN v_numero_generado;
+END
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_genera_nl_nutriente`() RETURNS text CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+	-- Declaración de variables
+	DECLARE v_nl_nutriente_sangre text;
+    DECLARE dato1 varchar(10);
+    DECLARE dato2 varchar(10);
+    DECLARE dato3 varchar(10);
+    DECLARE dato4 varchar(10);
+    
+    -- Asignación de valores
+    SET dato1 = ELT(fn_numero_aleatorio_rangos(1,12), "200","150","100","20","30","40", "50","60", "70","80","90","120");
+    SET dato2 = ELT(fn_numero_aleatorio_rangos(1,12), "200","150","100","20","30","40", "50","60", "70","80","90","120");
+    SET dato3 = ELT(fn_numero_aleatorio_rangos(1,12), "200","150","100","20","30","40", "50","60", "70","80","90","120");
+    SET dato4 = ELT(fn_numero_aleatorio_rangos(1,12), "200","150","100","20","30","40", "50","60", "70","80","90","120");
+    
+	SET v_nl_nutriente_sangre= concat_ws(" ", "nivel de glucosa en la sangre:",dato1, "mg/dL", 
+										  "nivel de colesterol total en la sangre:", dato2, "mg/dL",
+										  "nivel de vitamina D en la sangre:",dato3, "ng/mL",
+										  "nivel de hierro en la sangre:", dato4, "µg/dL");
+RETURN v_nl_nutriente_sangre;
+END
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_generar_codigo_aleatorio`(longitud INT) RETURNS varchar(255) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+  DECLARE codigo_aleatorio VARCHAR(255) DEFAULT '';
+  DECLARE caracteres VARCHAR(62) DEFAULT '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  DECLARE i INT DEFAULT 0;
+  
+  WHILE i < longitud DO
+    SET codigo_aleatorio = CONCAT(codigo_aleatorio, SUBSTRING(caracteres, FLOOR(RAND() * LENGTH(caracteres)) + 1, 1));
+    SET i = i + 1;
+  END WHILE;
+  
+  RETURN codigo_aleatorio;
+END
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_calcular_fin`(fecha_inicio DATETIME, v_tipo_plan VARCHAR(255)) RETURNS datetime
+    DETERMINISTIC
+BEGIN
+  DECLARE fecha_final DATETIME;
+
+  SET fecha_final = 
+    CASE v_tipo_plan
+      WHEN "Anual" THEN DATE_ADD(fecha_inicio, INTERVAL 1 YEAR)
+      WHEN "Semestral" THEN DATE_ADD(fecha_inicio, INTERVAL 6 MONTH)
+      WHEN "Trimestral" THEN DATE_ADD(fecha_inicio, INTERVAL 3 MONTH)
+      WHEN "Bimestral" THEN DATE_ADD(fecha_inicio, INTERVAL 2 MONTH)
+      WHEN "Mensual" THEN DATE_ADD(fecha_inicio, INTERVAL 1 MONTH)
+      WHEN "Semanal" THEN DATE_ADD(fecha_inicio, INTERVAL 1 WEEK)
+      WHEN "Diaria" THEN DATE_ADD(fecha_inicio, INTERVAL 1 DAY)
+      ELSE fecha_inicio
+    END;
+
+  RETURN fecha_final;
+END
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_calcula_antiguedad`(fecha DATE) RETURNS varchar(200) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+	DECLARE fecha_actual date;
+    DECLARE anios INT;
+    DECLARE meses INT;
+    DECLARE semanas INT;
+    DECLARE dias INT;
+    DECLARE edad VARCHAR(200);
+    
+    -- Obtenemos la fecla actual
+    SET fecha_actual = CURDATE();
+    
+    -- Calculamos la diferencia en años, mese, semanas, y dias
+    SET anios = TIMESTAMPDIFF(YEAR, fecha, fecha_actual);
+    SET meses = TIMESTAMPDIFF(MONTH, fecha, fecha_actual) - (12 * anios);
+    SET dias = DATEDIFF(fecha_actual, DATE_ADD(fecha, INTERVAL anios YEAR) + INTERVAL meses MONTH);
+    SET semanas = dias / 7;
+    SET dias = dias % 7;
+    
+    -- Construimos el mensaje de la edad
+    SET edad = concat_ws(" ", anios, "años, ", meses, "meses, ", semanas, "semanas y ", dias, "dias");
+RETURN edad;
+END
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_genera_comentarios_nutricionales`(v_cuantos INT) RETURNS text CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+	DECLARE i INT default 1;
+	DECLARE v_comentarios TEXT;
+    
+    WHILE i <= v_cuantos DO
+		SET v_comentarios =concat_ws("- ", v_comentarios, ELT(fn_numero_aleatorio_rangos(1,30), "Recuerda que una dieta equilibrada incluye tanto alimentos de origen animal como vegetal, No te olvides de las frutas y verduras",
+																								"Asegúrate de obtener suficiente proteína de fuentes vegetales como legumbres y nueces",
+																								"Esta dieta es excelente para la salud del corazón debido a su alto contenido de grasas saludables",
+																								"Es importante recordar que la pérdida de peso debe ser gradual y sostenible",
+																								"La fibra es esencial para la salud digestiva, intenta incluir alimentos ricos en fibra en cada comida",
+																								"Las proteínas son esenciales para la reparación y el crecimiento de los tejidos, asegúrate de consumir suficiente",
+																								"Aunque esta dieta es esencial para las personas con enfermedad celíaca, no necesariamente es más saludable para todos",
+																								"Esta dieta es una excelente opción para las personas con presión arterial alta",
+																								"Recuerda que no todos los tipos de colesterol son malos para ti, El colesterol HDL es beneficioso para la salud del corazón",
+																								"Aunque esta dieta puede ayudar a perder peso, es importante recordar que algunas grasas son saludables y necesarias para el cuerpo",
+																								"Intenta elegir carnes magras y pescado para reducir la ingesta de grasas saturadas",
+																								"Podrías considerar tomar un suplemento de vitamina B12, ya que esta vitamina se encuentra principalmente en alimentos de origen animal",
+																								"El aceite de oliva es una excelente fuente de grasas saludables en esta dieta",
+																								"Recuerda que es importante centrarse en la calidad de los alimentos, no solo en las calorías",
+																								"Si no estás acostumbrado a una dieta alta en fibra, aumenta la ingesta de fibra gradualmente para evitar molestias digestivas",
+																								"Si estás en una dieta alta en proteínas, asegúrate de beber suficiente agua para ayudar a tus riñones a procesar la proteína extra",
+																								"Asegúrate de leer las etiquetas de los alimentos, ya que el gluten puede estar oculto en muchos productos procesados",
+																								"Además de seguir la dieta DASH, es importante reducir la ingesta de sal para obtener los mejores resultados",
+																								"Los alimentos ricos en fibra pueden ayudar a reducir los niveles de colesterol",
+																								"No todas las grasas son iguales, Las grasas monoinsaturadas y poliinsaturadas son saludables para el corazón",
+																								"Incluir una variedad de alimentos en tu dieta te ayudará a obtener todos los nutrientes que necesitas",
+																								"Los alimentos fortificados pueden ser una buena manera de obtener los nutrientes que podrías estar perdiendo al excluir la carne",
+																								"Esta dieta también enfatiza la importancia de la actividad física y de disfrutar de las comidas con familia y amigos",
+																								"No te olvides de incluir ejercicio regular en tu rutina para ayudar a crear un déficit calórico",
+																								"Las frutas y verduras son excelentes fuentes de fibra y deberían ser una parte importante de tu dieta",
+																								"Recuerda que es posible obtener demasiada proteína, Es importante equilibrar la ingesta de proteínas con otros nutrientes",
+																								"Muchos alimentos naturales, como las frutas y verduras, son naturalmente libres de gluten",
+																								"Esta dieta recomienda limitar los alimentos y bebidas azucaradas, que pueden aumentar la presión arterial",
+																								"Los alimentos ricos en grasas saturadas pueden aumentar el colesterol, Intenta limitar estos alimentos en tu dieta",
+																								"Recuerda que algunos alimentos bajos en grasa pueden ser altos en azúcar, Siempre es importante leer las etiquetas de los alimentos"));
+		set i = i+1;
+    END WHILE;
+RETURN v_comentarios;
+END
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_genera_decripcion_dieta`(v_nombre_dieta VARCHAR(50)) RETURNS text CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+	DECLARE v_descripcion TEXT;
+    
+    SET v_descripcion = 
+		CASE v_nombre_dieta 
+			WHEN "Dieta omnivora" THEN "Incluye una variedad de alimentos tanto de origen animal como vegetal. Esto significa que los omnívoros pueden consumir carne, pescado, aves, frutas, verduras, granos, legumbres y lácteos."
+            WHEN "Dieta vegetariana" THEN "Esta dieta puede ayudarte a prevenir enfermedades, reducir el riesgo de cáncer y mejorar tu salud. Se basa en alimentos de origen vegetal y excluye la carne."
+            WHEN "Dieta mediterránea" THEN "Es una alimentación equilibrada, flexible y saludable que se remonta a la década de 1950 y que se asocia a una mayor longevidad y una menor mortalidad. Incluye frutas, verduras, legumbres, pescado y aceite de oliva."
+            WHEN "Dieta modificada en calorías" THEN "Esta dieta se basa en restringir el número de calorías diarias, limitando su consumo a un número inferior al que el cuerpo necesita en una jornada."
+            WHEN "Dieta modificada en fibra" THEN "La dieta alta en fibra es indicada como medida preventiva del cáncer de colon, diabetes, enfermedades cardiovasculares, obesidad e hiperlipidemias. Se recomienda: 20 a 35 g al día; de los cuales 1/3 de fibra soluble y 2/3 de fibra insoluble."
+            WHEN "Dieta modificada en proteína" THEN "Las dietas altas en proteínas buscan lograr un balance positivo de nitrógeno en pacientes catabólicos o con pérdida de proteínas por orina o pérdida de masa muscular. Las dietas bajas en proteína buscan lograr un balance positivo o en equilibrio."
+            WHEN "Dieta libre de gluten" THEN "Esta dieta excluye el gluten, una proteína encontrada en el trigo, la cebada y el centeno, que puede causar problemas de salud en personas con enfermedad celíaca o sensibilidad al gluten."
+            WHEN "Dieta DASH" THEN "Esta dieta es un plan de alimentación saludable que ayuda a bajar la presión arterial y el colesterol. Se basa en alimentos ricos en calcio, potasio, magnesio y fibra."
+            WHEN "Dieta baja en colesterol" THEN "Esta dieta se enfoca en reducir la ingesta de alimentos ricos en colesterol y grasas saturadas para mejorar la salud del corazón."
+            WHEN "Dieta baja en grasas" THEN "Esta dieta se basa en reducir la ingesta de alimentos ricos en grasas, como las carnes grasas, los lácteos enteros, los aceites y las frituras. La idea detrás de esta dieta es favorecer la pérdida de peso y reducir el riesgo de enfermedades del corazón."
+            ELSE "La dieta no exixste"
+		END;
+RETURN v_descripcion;
+END
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_genera_objetivos_dieta`(v_cuantos INT) RETURNS text CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+	DECLARE i INT default 1;
+	DECLARE v_objetivo TEXT;
+    
+    WHILE i <= v_cuantos DO
+		SET v_objetivo =concat_ws("- ", v_objetivo, ELT(fn_numero_aleatorio_rangos(1,37), "Permitir la flexibilidad y adaptabilidad a las preferencias personales y necesidades nutricionales.",
+																	  "Proporcionar antioxidantes, fibra y otras sustancias que pueden ayudar a prevenir enfermedades crónicas.",
+                                                                      "Ofrecer una amplia gama de vitaminas, minerales, proteínas, grasas y carbohidratos.",
+                                                                      "Proporcionar una variedad de nutrientes esenciales para una buena salud.",
+                                                                      "Bajar la presión arterial.",
+                                                                      "Reducir el riesgo de cardiopatía.",
+                                                                      "Reducir la posibilidad de desarrollar obesidad.",
+                                                                      "Reducir la inflamación y aumentar la sensibilidad a la insulina.",
+                                                                      "Mejorar la salud cardiovascular.",
+                                                                      "Prevenir enfermedades crónicas que acortan la vida.",
+                                                                      "Aumentar la vitalidad.",
+                                                                      "Lograr un balance energético positivo.",
+                                                                      "Aumentar de peso.",
+                                                                      "Mantener el peso en condiciones hipermetabólicas.",
+                                                                      "Ayudar a pacientes con déficit de peso corporal del 20% o más.",
+                                                                      "Normalizar las deposiciones.",
+                                                                      "Mantener la salud intestinal.",
+                                                                      "Reducir los niveles de colesterol.",
+                                                                      "Ayudar a controlar los niveles de azúcar en la sangre.",
+                                                                      "Ayudar a lograr un peso saludable.",
+                                                                      "Proporcionar una variedad de nutrientes esenciales para una buena salud.",
+                                                                      "Ofrecer una amplia gama de vitaminas, minerales, proteínas, grasas y carbohidratos.",
+                                                                      "Proporcionar antioxidantes, fibra y otras sustancias que pueden ayudar a prevenir enfermedades crónicas",
+                                                                      "Permitir la flexibilidad y adaptabilidad a las preferencias personales y necesidades nutricionales.",
+                                                                      "Tratamiento de la enfermedad celíaca, la sensibilidad no-celíaca al gluten y de la alergia al trigo.",
+                                                                      "Mejorar la salud intestinal.",
+                                                                      "Reducir los síntomas de la enfermedad celíaca y la sensibilidad al gluten.",
+                                                                      "Reducir la presión arterial alta.",
+                                                                      "Reducir el riesgo de enfermedades del corazón, insuficiencia cardíaca y accidentes cerebrovasculares.",
+                                                                      "Ayudar a prevenir o controlar la diabetes tipo 2.",
+                                                                      "Mejorar los niveles de colesterol.",
+                                                                      "Reducir las probabilidades de cálculos renales.",
+                                                                      "Reducir el riesgo de enfermedades del corazón.",
+                                                                      "Reducir el riesgo de enfermedad cardiovascular.",
+                                                                      "Reducir el consumo de alimentos procesados.",
+                                                                      "Aumentar la cantidad de colesterol bueno.",
+                                                                      "Prevenir la obesidad."));
+		set i = i+1;
+    END WHILE;
+RETURN v_objetivo;
+END
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_genera_restricciones_dieta`(v_cuantos INT) RETURNS text CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+	DECLARE i INT default 1;
+	DECLARE v_restricciones TEXT;
+    
+    WHILE i <= v_cuantos DO
+		SET v_restricciones =concat_ws("- ", v_restricciones, ELT(fn_numero_aleatorio_rangos(1,21), "Limitar el consumo de alimentos procesados.",
+																									"Evitar la ingesta desproporcionada de carne por encima de los vegetales.",
+																									"Moderar el consumo de carne en la variante flexitariana de esta dieta.",
+																									"Excluir la carne de vaca, ave y pescado, y los huevos.",
+																									"Evitar alimentos que contienen gelatina, un agente de espesamiento derivado del colágeno animal.",
+																									"Limitar el consumo de alimentos procesados, azúcares añadidos, carnes rojas, grasas saturadas y alimentos altos en sodio.",
+																									"Restringir las calorías en forma de alcohol.",
+																									"Reducir la cantidad total de calorías que se consume o bebe en un día.",
+																									"Evitar las pérdidas mayores de 500 g. de peso a la semana.",
+																									"Evitar frutas y verduras crudas.",
+																									"Evitar el trigo integral y los productos de grano integral.",
+																									"Retirar todos aquellos alimentos que contengan proteínas de alto valor biológico (PAVB), en general, proteínas de origen animal.",
+																									"Restringir las legumbres y los frutos secos ya que contienen una gran cantidad de proteínas.",
+																									"Evitar todos los alimentos y bebidas que contengan trigo, centeno y cebada.",
+																									"Evitar alimentos con demasiada sal.",
+																									"Reducir la cantidad que se consume de alimentos con sal agregada (sodio) y agregar sal a las comidas.",
+																									"Reducir el consumo de alcohol, bebidas azucaradas, alimentos con alto contenido de grasas saturadas.",
+																									"Consumir menos de 300 mg de colesterol.",
+																									"Limitar la grasa monoinsaturada a un 15-20% de la dieta.",
+																									"Comer solo alimentos con 0 gramos de grasa.",
+																									"No usar ningún tipo de grasa (como manteca, margarina o aceite) para preparar alimentos."));
+		set i = i+1;
+    END WHILE;
+RETURN v_restricciones;
+END
+'''),
+
+    migrations.RunSQL('''
+        CREATE DEFINER=`root`@`localhost` FUNCTION `fn_genera_observaciones_dieta`(v_cuantos INT) RETURNS text CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+	DECLARE i INT default 1;
+	DECLARE v_observaciones TEXT;
+    
+    WHILE i <= v_cuantos DO
+		SET v_observaciones =concat_ws("- ", v_observaciones, ELT(fn_numero_aleatorio_rangos(1,20), "Incluye todo tipo de alimentos, tanto vegetales como animales.",
+																									"Puede aportar todos los nutrientes necesarios para la salud del individuo si se lleva de forma correcta.",
+																									"Existen dos variaciones: la dieta omnívora equilibrada y la dieta flexitariana, que consume menos cantidad de carne.",
+																									"Un error habitual es la desproporcionada ingesta de carne por encima de los vegetales, lo que puede repercutir en la salud cardiovascular.",
+																									"El principal desafío es obtener suficientes proteínas, hierro, calcio, zinc, vitamina B12, Omega 3 y vitamina D.",
+																									"Se ha asociado a una menor prevalencia de cáncer de próstata y colon.",
+																									"Tiene un poder cardioprotector y ayuda a prevenir la obesidad.",
+																									"Incluye una gran cantidad de alimentos vegetales, pescados, mariscos, aves de corral, productos lácteos y huevos.",
+																									"Se asocia a una mayor longevidad y prevención de enfermedades.",
+																									"Es beneficiosa para la formación de musculatura con un buen entrenamiento.",
+																									"La dieta alta en calorías busca lograr un balance energético positivo y aumento de peso.",
+																									"La dieta baja en calorías busca producir un balance energético negativo y reducción de peso por exceso de grasa corporal.",
+																									"La dieta alta en fibra es indicada como medida preventiva del cáncer de colon, diabetes, enfermedades cardiovasculares, obesidad e hiperlipidemias.",
+																									"La dieta baja en fibra se indica en padecimientos inflamatorios gastrointestinales.",
+																									"La dieta alta en proteínas busca lograr un balance positivo de nitrógeno en pacientes catabólicos o con pérdida de proteínas.",
+																									"La dieta baja en proteína busca lograr un balance positivo o en equilibrio.",
+																									"Se recomienda para personas con enfermedad celíaca o sensibilidad al gluten.",
+																									"Puede contener más grasas saturadas y azúcar para mejorar el sabor y estabilidad de los alimentos.",
+																									"Se enfoca en frutas y verduras frescas, alimentos ricos en calcio y potasio, y limita el sodio.",
+																									"Se asocia a una mayor longevidad y ayuda a prevenir enfermedades crónicas que acortan la vida."));
+		set i = i+1;
+    END WHILE;
+RETURN v_observaciones;
+END
 ''')
+
     ]
 
