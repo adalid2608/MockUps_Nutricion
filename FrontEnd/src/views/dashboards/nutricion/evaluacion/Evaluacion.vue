@@ -2,7 +2,7 @@
 import { computed, nextTick, ref, watch } from 'vue';
 import BaseBreadcrumb from '@/components/shared/BaseBreadcrumb.vue';
 import UiParentCard from '@/components/shared/UiParentCard.vue';
-const page = ref({ title: 'Evaluación Nutricional' });
+const page = ref({ title: 'Planes Nutricionales' });
 const breadcrumbs = ref([
     {
         text: 'Nutrición',
@@ -10,7 +10,7 @@ const breadcrumbs = ref([
         href: '#'
     },
     {
-        text: 'Dietas',
+        text: 'Planes Asignados',
         disabled: true,
         href: '#'
     }
@@ -52,6 +52,76 @@ const formTitle = computed(() => {
 })
 function initialize() {
     desserts.value = [
+        {
+            name: 'Adalid',
+            calories: 159,
+            fat: 6,
+            carbs: 24,
+            protein: 4,
+        },
+        {
+            name: 'Aldair',
+            calories: 237,
+            fat: 9,
+            carbs: 37,
+            protein: 4.3,
+        },
+        {
+            name: 'Emilio',
+            calories: 262,
+            fat: 16,
+            carbs: 23,
+            protein: 6,
+        },
+        {
+            name: 'Osiel',
+            calories: 305,
+            fat: 3.7,
+            carbs: 67,
+            protein: 4.3,
+        },
+        {
+            name: 'Maximiliano',
+            calories: 356,
+            fat: 16,
+            carbs: 49,
+            protein: 3.9,
+        },
+        {
+            name: 'Ameli',
+            calories: 375,
+            fat: 0,
+            carbs: 94,
+            protein: 0,
+        },
+        {
+            name: 'Dulce',
+            calories: 392,
+            fat: 0.2,
+            carbs: 98,
+            protein: 0,
+        },
+        {
+            name: 'Luz',
+            calories: 408,
+            fat: 3.2,
+            carbs: 87,
+            protein: 6.5,
+        },
+        {
+            name: 'Daniel',
+            calories: 452,
+            fat: 25,
+            carbs: 51,
+            protein: 4.9,
+        },
+        {
+            name: 'Armando',
+            calories: 518,
+            fat: 26,
+            carbs: 65,
+            protein: 7,
+        },
         {
             name: 'Adalid',
             calories: 159,
@@ -181,7 +251,7 @@ initialize()
                             <v-spacer></v-spacer>
                             <v-dialog v-model="dialog" max-width="500px">
                                 <template v-slot:activator="{ props }">
-                                    <v-btn color="primary"  variant="flat" dark  v-bind="props" >Crear Plan Nutricional</v-btn>
+                                    <v-btn color="success"  variant="flat" dark  v-bind="props" >Crear Plan Nutricional</v-btn>
                                 </template>
                                 <v-card>
                                     <v-card-title class="pa-4 bg-secondary">
