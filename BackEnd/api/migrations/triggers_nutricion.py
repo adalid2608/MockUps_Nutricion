@@ -1024,7 +1024,765 @@ BEGIN
     END WHILE;
 RETURN v_observaciones;
 END
-''')
+'''),
 
-    ]
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_poblar_bd`(v_password varchar(10))
+    DETERMINISTIC
+BEGIN
+	if v_password = "abcde" then 
+		call sp_inserta_empleados(100, null);
+        call sp_inserta_indicadores_nutricionales(10);
+        CALL sp_inserta_membresias(20, null);
+		CALL sp_inserta_membresias(20, 'Individual');
+		CALL sp_inserta_membresias(10, 'Familiar');
+		CALL sp_inserta_membresias(5, 'Empresarial');
+	else
+		select "La contraseña es incorrecta, no se poblo la BD" as Mensaje;
+	end if;
+END
+
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_inserta_empleados`(v_cuantos int, v_tipo varchar(15))
+BEGIN
+	DECLARE i INT default 1;
+    DECLARE v_id_persona INT;
+    DECLARE v_id_sucursal INT;
+	DECLARE v_pos_sucursal INT DEFAULT 0;
+    -- debemos conocer el total de sucursales activas
+	DECLARE v_total_sucursales INT DEFAULT (select count(*) FROM sucursales WHERE estatus = b'1');
+    
+    DECLARE v_id_area INT;
+    DECLARE v_pos_area INT DEFAULT 0;
+    -- 
+    DECLARE v_total_areas INT default null;
+    DECLARE v_numero_empleados_sucursal INT default null;
+	
+    -- Para elegir a la sucursal a la que se le dasignara
+    while i <= v_cuantos do
+		-- Insertar los datos del la persona
+        SET v_tipo = null;
+        call sp_inserta_personas(1);
+        set v_id_persona = last_insert_id();
+        
+        -- Determina la sucursal a la que pertenece el empleado
+        sucursal:LOOP
+        if v_total_sucursales > 1 then
+			set v_pos_sucursal  = fn_numero_aleatorio_rangos(0, v_total_sucursales-1);
+            SET v_id_sucursal = (SELECT id FROM sucursales LIMIT v_pos_sucursal,1);
+            
+            -- como ya se que sucursal, calcular el area a ala que le trabaja
+            SET v_total_areas = (SELECT count(*) FROM areas WHERE sucursal_id = v_id_sucursal AND estatus = b'1');
+            -- calcular el total de empleados de la sucursal
+            SET v_numero_empleados_sucursal = (SELECT COUNT(*) FROM empleados WHERE sucursal_id = v_id_sucursal);
+            
+            -- si la sucursal no tiene areas, elegir una de las de la matriz
+            IF v_total_areas = 0 THEN 
+				set v_total_areas = (SELECT COUNT(*) FROM areas WHERE sucursal_id = 1 AND estatus = b'1');
+                SET v_pos_area = fn_numero_aleatorio_rangos(0,v_total_areas-1);
+                SET v_id_area = (SELECT id FROM areas WHERE  sucursal_id = 1 LIMIT v_pos_area,1);
+            ELSE
+				SET v_pos_area = fn_numero_aleatorio_rangos(0,v_total_areas-1);
+                SET v_id_area = (SELECT id FROM areas WHERE  sucursal_id = v_id_sucursal LIMIT v_pos_area,1);
+            END IF;
+            LEAVE sucursal;
+		ELSE 
+			SELECT ("Al menos debería existir 1 sucursal") as MensajeError;
+            LEAVE sucursal;
+        end if;
+        end loop;
+        
+        -- En caso de que no se diga que tipo de empleado creamos, se elige uno aleatorio
+        if v_tipo IS NULL THEN
+			set v_tipo = ELT(fn_numero_aleatorio_rangos(1,5), "Instructor","Administrativo","Intendecia", "Area Medicá","Directivo");
+        END IF;
+        
+        -- Ya que se tiene todos los datos del trabajador insertar en la subentidad
+        INSERT INTO empleados VALUES(v_id_persona,
+									 v_tipo,
+                                     v_id_area,
+                                     v_numero_empleados_sucursal+1,
+                                     v_id_sucursal,
+                                     fn_genera_fecha_registro("2015-01-01", CURDATE(), "08:00:00", "20:00:00"));
+        
+		set i = i+1;
+    end while;
+END
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_inserta_personas`(v_cuantos INT)
+    DETERMINISTIC
+BEGIN
+	DECLARE i INT DEFAULT 1;
+    DECLARE v_genero CHAR(1) default NULL;
+    
+    DECLARE v_titulo_porcentaje boolean DEFAULT NULL;
+    declare  v_titulo varchar(20) default null;
+    
+    DECLARE v_fecha_actual DATE;
+    DECLARE v_fecha_limite_16 DATE;
+    DECLARE v_fecha_limite_65 DATE;
+    declare v_fecha_inicio_registro date;
+    declare v_fecha_fin_registro date;
+    DECLARE v_horario_inicio_registro TIME;
+    DECLARE v_horario_fin_registro TIME;
+    
+    set v_fecha_actual = curdate();
+    set v_fecha_limite_16 = date_sub(v_fecha_actual, INTERVAL 16 YEAR);
+	set v_fecha_limite_65 = date_sub(v_fecha_actual, INTERVAL 65 YEAR);
+    
+    -- considerando que el gimnasio empezo a funcionar el 01 de Enero de 2020 y que continua en operación
+    SET v_fecha_inicio_registro = "2020-01-01";
+    SET v_fecha_fin_registro = curdate();
+    -- considera que el área de membresias 
+    set v_horario_inicio_registro = "08:00:00";
+    set v_horario_fin_registro = "20:00:00";
+    
+    while i <= v_cuantos DO
+		set v_titulo_porcentaje= fn_genera_bandera_porcentaje(20);
+        SET v_genero = ELT (fn_numero_aleatorio_rangos(1,2),"M","F");
+        if v_titulo_porcentaje then
+			set v_titulo = fn_genera_titulo_cortesia(v_genero);
+		end if;
+        
+		INSERT INTO personas VALUES (
+		default,
+		v_titulo,
+		fn_genera_nombre(v_genero),
+		fn_genera_Apellido(),
+		fn_genera_Apellido(),
+        fn_genera_fecha_nacimiento(v_fecha_limite_65,v_fecha_limite_16),
+		null,
+		v_genero,
+		fn_genera_sangre(),
+		default,
+		fn_genera_fecha_registro(v_fecha_inicio_registro, v_fecha_fin_registro, v_horario_inicio_registro,v_horario_fin_registro),
+		NULL);
+        set v_titulo = null;
+        SET i = i +1;
+	END while;
+END
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_inserta_indicadores_nutricionales`(v_cuantos INT)
+    DETERMINISTIC
+BEGIN
+	 -- Declaración de variables
+    DECLARE i INT default 1;
+    DECLARE v_edad int unsigned default 0;
+    DECLARE v_imc decimal(5,3) default 0.0;
+    DECLARE v_peso decimal(5,2) default 0.0;
+    DECLARE v_altura decimal(5,2) default 0.0;
+    DECLARE v_circunferencia_cintura decimal(5,2) default 0.0;
+    DECLARE v_nl_nutriente_sangre TEXT default null;
+    
+    while i <= v_cuantos do
+        
+		set v_edad = fn_numero_aleatorio_rangos(16,50);
+        
+        SET v_peso = fn_numero_aleatorio_decimal(60.0,130.0);
+        SET v_altura = fn_numero_aleatorio_decimal(1.5,2.15);
+        
+        set v_imc = (v_peso)/(v_altura*v_altura);
+        
+        set v_circunferencia_cintura = fn_numero_aleatorio_decimal(60.0,130.0);
+        
+        set v_nl_nutriente_sangre = fn_genera_nl_nutriente();
+        
+		insert into indicadores_nutricionales values (
+			default,
+            v_edad,
+            v_imc,
+            v_circunferencia_cintura,
+            v_nl_nutriente_sangre
+        );
+		set i = i+1;
+    END WHILE;
+END
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_inserta_membresias`(v_cuantos INT, v_tipo varchar(20))
+    DETERMINISTIC
+BEGIN
+	 -- Declaración de variables
+    DECLARE i INT default 1;
+    DECLARE v_id_persona INT;
+	DECLARE v_lim_miembros INT;
+    DECLARE v_id_membresia INT;
+    DECLARE v_tipo_servicios VARCHAR(10);
+    DECLARE v_tipo_plan VARCHAR(10);
+    DECLARE v_nivel VARCHAR(10);
+    DECLARE v_codigo varchar(50);
+    DECLARE v_aleatorio BIT DEFAULT b'0';
+    DECLARE v_fecha_inicio datetime default NULL;
+    DECLARE v_fecha_fin DATETIME default NULL;
+    DECLARE v_fecha_registro DATETIME DEFAULT NULL;
+    
+    -- Determinar si la membresia creada sera aleatoria
+    IF v_tipo IS NULL THEN
+		SET v_aleatorio = b'1';
+    END IF;
+    
+    while i <= v_cuantos do
+		IF v_aleatorio = b'1' THEN
+            set v_tipo = ELT(fn_numero_aleatorio_rangos(1,3), "Individual","Familiar","Empresarial");
+        END IF;
+        
+        SET v_tipo_servicios = NULL;
+		SET v_tipo_plan = NULL;
+		SET v_nivel = NULL;
+        SET v_codigo = NULL;
+        
+        -- INSERTAR EN MEMBRESIAS, LUEGO PERSONAS, LUEGO USUARIOS, TAL VEZ EN MIEMBROS, MEMBRESIAS_USUARIOS
+        
+        CASE v_tipo
+		  WHEN "Individual" THEN SET v_lim_miembros=1;
+		  WHEN "Familiar" THEN SET v_lim_miembros= fn_numero_aleatorio_rangos(1,5);
+		  WHEN "Empresarial" THEN SET v_lim_miembros = fn_numero_aleatorio_rangos(10,50);
+          ELSE SET  v_lim_miembros=1;
+		END case;
+        
+        -- Calcular el servicio aleoatoriamente
+        if v_tipo_servicios IS NULL THEN
+			set v_tipo_servicios = ELT(fn_numero_aleatorio_rangos(1,4), "Basicos","Completa","Coaching", "Nutriólogo");
+        END IF;
+        
+        -- Calcular el codigo aleatoriamente
+        IF v_codigo IS NULL THEN
+			SET v_codigo = fn_generar_codigo_aleatorio(50);
+        END IF;
+        
+        -- Calcular el plan aleatoriamente
+        if v_tipo_plan IS NULL THEN
+			set v_tipo_plan = ELT(fn_numero_aleatorio_rangos(1,7), "Anual","Semestral","Trimestral", "Bimestral", "Mensual", "Semanal", "Diaria");
+        END IF;
+        
+        -- Calculamos la fecha de inicio de la membresia
+        set v_fecha_registro = fn_genera_fecha_registro("2015-01-01", CURDATE(), "08:00:00", "20:00:00");
+        
+        -- Culamos la fecha del fin de la membresia
+        SET v_fecha_fin = fn_calcular_fin(v_fecha_registro, v_tipo_plan);
+        
+        -- Calcular el nivel aleatoriamente
+        if v_nivel IS NULL THEN
+			set v_nivel = ELT(fn_numero_aleatorio_rangos(1,4), "Nuevo","Plata","Oro", "Diamante");
+        END IF;
+        
+        -- Ingresamos la fecha de registro
+        SET v_fecha_inicio = v_fecha_registro;
+        
+		-- Ya que se tiene todos los datos del usuario se inserta en la subentidad
+        INSERT INTO membresias VALUES (default,
+									   v_codigo,
+									   v_tipo,
+									   v_tipo_servicios,
+									   v_tipo_plan,
+                                       v_nivel,
+                                       v_fecha_inicio,
+                                       v_fecha_fin,
+                                       default,
+                                       v_fecha_registro,
+                                       null);
+
+		-- Obtenemos el ID de la membresia
+		set v_id_membresia = last_insert_id();
+
+        -- Insertamos en las relaciones
+        call sp_inserta_membresias_usuarios(v_lim_miembros,v_id_membresia);
+
+		set i = i+1;
+    END WHILE;
+END
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_inserta_membresias_usuarios`(v_cuantos int,v_id_membresia int)
+    DETERMINISTIC
+BEGIN
+	-- Declaración de variables
+    DECLARE i INT default 1;
+    DECLARE v_id_usuario int;
+	DECLARE v_fecha_conexion DATETIME;
+    DECLARE v_tipo_servicios varchar(10);
+    SET v_tipo_servicios = (SELECT tipo_servicios FROM membresias WHERE ID = v_id_membresia);
+    
+    while i <= v_cuantos do
+		call sp_inserta_miembros(1, null);
+		set v_id_usuario = last_insert_id();
+		-- Revisando la fecha de la ultima conexión
+		SET v_fecha_conexion = (SELECT ultima_conexion from usuarios where persona_id = v_id_usuario );
+        
+		-- Insertar los datos
+		INSERT INTO membresias_usuarios values (v_id_membresia,
+												v_id_usuario,
+												v_fecha_conexion,
+												default);
+		
+        -- Insertando en valoraciones nutricionales y preguntas nutricionales si la membresia es 'Completa' o 'Nutriólogo'
+        if v_tipo_servicios ='Completa' OR v_tipo_servicios ='Nutriólogo' then
+			CALL sp_inserta_valoraciones_nutricionales(1,v_id_usuario);
+            call sp_inserta_preguntas_nutricionales(1,v_id_usuario);
+        end if;
+		set i = i+1;
+    END WHILE;
+END
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_inserta_miembros`(v_cuantos int, v_tipo varchar(15))
+BEGIN
+    -- Declaración de variables
+    DECLARE i INT default 1;
+    DECLARE v_id_persona INT;
+    DECLARE v_tiempo DATETIME;
+    DECLARE v_antiguedad VARCHAR(80);
+    
+    -- debemos conocer el total de personas activas
+    DECLARE v_total_personas INT DEFAULT (select count(*) FROM personas WHERE estatus = b'1');
+    
+	while i <= v_cuantos do
+		SET v_tipo = NULL;
+        SET v_tiempo = NULL;
+		
+        -- obtener un id que no este repetido
+        
+        call sp_inserta_usuarios(1, null);
+        set v_id_persona = last_insert_id();
+        
+        -- En caso de que no se diga que tipo de miembro creamos, se elige uno aleatorio
+        if v_tipo IS NULL THEN
+            set v_tipo = ELT(fn_numero_aleatorio_rangos(1,5), "Frecuente","Ocasional","Nuevo", "Esporádico","Una sola visita");
+        END IF;
+        
+        personas:LOOP
+        SET v_tiempo = (SELECT Fecha_Registro FROM personas WHERE ID=v_id_persona); 
+		
+		if TIMESTAMPDIFF(YEAR,v_tiempo,CURDATE()) < 1 THEN 
+			SET v_antiguedad = concat_ws(" ", 'Miembro nuevo con ',fn_calcula_antiguedad(v_tiempo) );
+            LEAVE personas;
+		ELSEIF TIMESTAMPDIFF(YEAR,v_tiempo,CURDATE()) BETWEEN 1 AND 3 THEN 
+			SET v_antiguedad = concat_ws(" ", 'Miembro regular con ',fn_calcula_antiguedad(v_tiempo) );
+            LEAVE personas;
+		ELSE 
+			SET v_antiguedad = concat_ws(" ", 'Miembro antiguo con ',fn_calcula_antiguedad(v_tiempo) );
+            LEAVE personas;
+        END IF;
+        END LOOP;
+
+        -- Ya que se tiene todos los datos del usuario se inserta en la subentidad
+        INSERT INTO miembros VALUES (v_id_persona,
+									 v_tipo,
+                                     default,
+                                     v_antiguedad);
+		set i = i+1;
+    END WHILE;
+END
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_inserta_usuarios`(v_cuantos int, v_tipo varchar(15))
+    DETERMINISTIC
+BEGIN
+	DECLARE i INT default 1;
+    DECLARE v_aleatorio BIT default b'0';
+    DECLARE v_estatus_conexion varchar(50) DEFAULT NULL;
+    DECLARE v_id_persona INT;
+    DECLARE v_password varbinary(256);
+    DECLARE v_username varchar(60);
+    
+    IF v_tipo IS NULL THEN
+		SET v_aleatorio = b'1';
+    END IF;
+    
+    while i <= v_cuantos do
+		-- SELECT concat("Entrando en el ciclo #", i) as MensajeError;
+		IF v_aleatorio = b'1' then
+			SET v_tipo = null;
+			SET v_estatus_conexion = NULL;
+		END IF;
+		
+		call sp_inserta_personas(1);
+		set v_id_persona = last_insert_id();
+		
+		-- En caso de que no se diga que tipo de empleado creamos, se elige uno aleatorio
+		if v_tipo IS NULL THEN
+			set v_tipo = ELT(fn_numero_aleatorio_rangos(1,4), "Empleado","Visitante","Miembro", "Instructor");
+		END IF;
+		
+		-- En caso de que no se diga la ultima conexión, se elige uno aleatorio
+		if v_estatus_conexion IS NULL THEN
+			set v_estatus_conexion = ELT(fn_numero_aleatorio_rangos(1,3), "Online","Offline","Banned");
+		END IF;
+        
+        -- Crear el nombre del usuario
+        SET v_username =concat_ws("_", (SELECT SUBSTRING(Nombre, 1, 4) FROM personas WHERE v_id_persona =id), v_id_persona, ELT(fn_numero_aleatorio_rangos(1,7), '*','@','?','-','+','/','}'));
+		
+        -- Asignar una contraseña
+		SET v_password = concat_ws("_", (SELECT SUBSTRING(Nombre, 1, 4) FROM personas WHERE v_id_persona =id),  v_id_persona );
+        
+		-- Ya que se tiene todos los datos del trabajador insertar en la subentidad
+		INSERT INTO usuarios VALUES(v_id_persona,
+									 v_password,
+									 v_tipo,
+									 v_estatus_conexion,
+									 fn_genera_fecha_registro( (SELECT fecha_registro FROM personas WHERE id= v_id_persona), CURDATE(), "08:00:00", "20:00:00"),
+                                     v_username);
+		set i = i+1;
+    END WHILE;
+END
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_inserta_valoraciones_nutricionales`(v_cuantos int,v_id_usuario int)
+    DETERMINISTIC
+BEGIN
+	-- Declaración de variables
+    DECLARE i INT default 1;
+    DECLARE v_id_ind_nutricional INT UNSIGNED;
+    DECLARE v_valor VARCHAR(20);
+    DECLARE v_id_empleado INT UNSIGNED;
+    DECLARE v_comentarios TEXT;
+    DECLARE v_pos_ind_nut INT DEFAULT 0;
+    DECLARE v_pos_empleado INT DEFAULT 0;
+    DECLARE v_id_dieta_usuario INT unsigned;
+    
+    -- debemos conocer el total de indicadores nutricionales
+	DECLARE v_total_ind_nutri INT DEFAULT (select count(*) FROM indicadores_nutricionales);    
+    
+    -- debemos conocer el total de nutriologos
+    DECLARE v_total_nutriologos INT DEFAULT (select count(*) FROM empleados WHERE Puesto = 'Area Medicá');
+    
+    while i <= v_cuantos do
+		-- Obtener un registro de la tabla catalogo indicador nutricional
+        indicadores_nutricionales:LOOP
+        if v_total_ind_nutri > 1 then
+			set v_pos_ind_nut  = fn_numero_aleatorio_rangos(0, v_total_ind_nutri-1);
+            SET v_id_ind_nutricional = (SELECT id FROM indicadores_nutricionales LIMIT v_pos_ind_nut,1);
+            LEAVE indicadores_nutricionales;
+		ELSE 
+			SELECT ("Al menos debería existir 1 indicador nutricional") as MensajeError;
+            LEAVE indicadores_nutricionales;
+        end if;
+        end loop;
+        
+        -- Asignamos el valor
+        SET v_valor = ELT(fn_numero_aleatorio_rangos(1,2), "Adecuado","Inadecuado");
+        
+		-- Obtener un empleado que sea nutriologo
+        empleados:LOOP
+        if v_total_nutriologos > 1 then
+			set v_pos_empleado  = fn_numero_aleatorio_rangos(0, v_total_nutriologos-1);
+            SET v_id_empleado = (SELECT persona_id FROM empleados LIMIT v_pos_empleado,1);
+            LEAVE empleados;
+		ELSE 
+			SELECT ("Al menos debería existir 1 empleado del area medica") as MensajeError;
+            LEAVE empleados;
+        end if;
+        end loop;
+        
+		-- Asignamos los comentarios
+		SET v_comentarios = fn_genera_comentarios_nutricionales(fn_numero_aleatorio_rangos(1,5));
+        
+		-- Insertar los datos
+		INSERT INTO valoraciones_nutricionales values (default,
+													   v_id_usuario,
+													   v_id_ind_nutricional,
+													   v_valor,
+													   NOW(),
+													   v_id_empleado,
+													   v_comentarios);
+		-- Insertando en la relación dietas usuarios
+        CALL sp_inserta_dietas_usuarios(1,v_id_usuario);
+        SET v_id_dieta_usuario = last_insert_id();
+        -- Insertando en el seguimiento de dietas usuarios
+        CALL sp_inserta_seguimientos_dietas_usuarios(1,v_id_dieta_usuario);
+        set i = i+1;
+    END WHILE;
+END
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_inserta_dietas_usuarios`(v_cuantos int,v_id_usuario int)
+    DETERMINISTIC
+BEGIN
+	-- Declaración de variables
+    DECLARE i INT default 1;
+    DECLARE v_id_dieta INT;
+	DECLARE v_fecha_asignacion DATETIME;
+    DECLARE v_fecha_inicio DATETIME;
+    DECLARE v_fecha_fin DATETIME;
+    DECLARE v_observaciones TEXT;
+    
+    while i <= v_cuantos do
+		-- Insertando la dieta
+		call sp_inserta_dieta(1, null);
+		set v_id_dieta = last_insert_id();
+		
+        -- Obtenemos la fecha de asignacion de la dieta
+        set v_fecha_asignacion = (SELECT m.Fecha_Registro 
+								  FROM membresias m
+								  INNER JOIN membresias_usuarios mu ON m.ID = mu.Membresia_ID
+								  WHERE mu.Usuarios_ID = v_id_usuario);
+        
+        -- Obtenemos la fecha del inicio de la dieta
+        SET v_fecha_inicio = (SELECT m.Fecha_Inicio 
+							  FROM membresias m
+							  INNER JOIN membresias_usuarios mu ON m.ID = mu.Membresia_ID
+						      WHERE mu.Usuarios_ID = v_id_usuario);
+                              
+        -- Obtenemos la fecha del fin de la dieta
+        SET v_fecha_fin = (SELECT m.Fecha_Fin 
+						   FROM membresias m
+						   INNER JOIN membresias_usuarios mu ON m.ID = mu.Membresia_ID
+						   WHERE mu.Usuarios_ID = v_id_usuario);
+                              
+        -- Asignando las onservaciones
+        SET v_observaciones = fn_genera_observaciones_dieta(fn_numero_aleatorio_rangos(1,5));
+        
+		-- Insertar los datos
+		INSERT INTO dietas_usuarios values (default,
+											v_id_usuario,
+											v_id_dieta,
+											v_fecha_asignacion,
+											v_fecha_inicio,
+											v_fecha_fin,
+											v_observaciones,
+											default);
+		set i = i+1;
+    END WHILE;
+END
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_inserta_dieta`(v_cuantos int,v_nombre VARCHAR(300))
+    DETERMINISTIC
+BEGIN
+	-- Declaración de variables
+    DECLARE i INT default 1;
+	DECLARE v_descripcion TEXT;
+    DECLARE v_objetivo TEXT;
+    DECLARE v_restricciones TEXT;
+	DECLARE v_aleatorio BIT DEFAULT b'0';
+    
+    -- Determinar si la dieta creada sera aleatoria
+    IF v_nombre IS NULL THEN
+		SET v_aleatorio = b'1';
+    END IF;
+    
+    while i <= v_cuantos do
+		IF v_aleatorio = b'1' THEN
+			SET v_nombre = fn_genera_nombre_dieta();
+		END IF;
+        
+		-- Obteniendo la descripción dependiendo de la dieta
+		SET v_descripcion = fn_genera_decripcion_dieta(v_nombre);
+        
+        -- Asignando los objetivos de las dietas
+        SET v_objetivo = fn_genera_objetivos_dieta(fn_numero_aleatorio_rangos(1,6));
+        
+        -- Asignando las restricciones de las dietas
+        SET v_restricciones = fn_genera_restricciones_dieta(fn_numero_aleatorio_rangos(1,4));
+        
+		-- Insertar los datos
+		INSERT INTO dietas values (default,
+								   v_nombre,
+								   v_descripcion,
+                                   v_objetivo,
+                                   v_restricciones,
+								   default);
+		set i = i+1;
+    END WHILE;
+END
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_inserta_seguimientos_dietas_usuarios`(v_cuantos int,v_id_dieta_usuario int)
+    DETERMINISTIC
+BEGIN
+	-- Declaración de variables
+    DECLARE i INT default 1;
+    DECLARE v_descripcion TEXT;
+    DECLARE v_id_empleado int UNSIGNED;
+	DECLARE v_estatus VARCHAR(20);
+    DECLARE v_por_avance VARCHAR(20);
+    
+    while i <= v_cuantos do
+		-- Obtenemos la descripción
+         SET v_descripcion = (SELECT d.descripccion 
+							  FROM dietas d 
+                              INNER JOIN dietas_usuarios du ON du.dieta_id = d.id
+                              WHERE du.id = v_id_dieta_usuario);
+                              
+		-- Obtenemos el id del empleado
+         SET v_id_empleado = (SELECT vn.empleado_id 
+							  FROM valoraciones_nutricionales vn
+							  INNER JOIN dietas_usuarios du ON du.usuario_id = vn.usuario_id
+                              WHERE du.id = v_id_dieta_usuario);
+                              
+		-- Calculamos un el estatus aleatorio
+		SET v_estatus = ELT(fn_numero_aleatorio_rangos(1,5),'Programada','Iniciada','Seguimiento','Suspendida','Finalizada' );
+        
+		-- Calculamos un avance aleatorio
+		SET v_por_avance = ELT(fn_numero_aleatorio_rangos(1,10), '0% a 10%','11% a 20%','21% a 30%','31% a 40%','41% a 50%','51% a 60%','61% a 70%','71% a 80%','81% a 90%','91% a 100%');
+        
+		-- Insertar los datos
+		INSERT INTO seguimientos_dietas_usuarios values (v_id_dieta_usuario,
+														 v_descripcion,
+														 v_id_empleado,
+														 v_estatus,
+														 v_por_avance);
+		set i = i+1;
+    END WHILE;
+END
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_inserta_preguntas_nutricionales`(v_cuantos INT, v_persona_id INT UNSIGNED)
+    DETERMINISTIC
+BEGIN
+	 -- Declaración de variables
+    DECLARE i INT default 1;
+    DECLARE v_comidas_x_dia VARCHAR(10);
+    DECLARE v_variedad_comidas VARCHAR(20);
+    DECLARE v_regularidad_carbohidratos VARCHAR(20);
+    DECLARE v_grasa_g VARCHAR(13);
+    DECLARE v_calorias_consumidas VARCHAR(20);
+    
+    while i <= v_cuantos do
+		set v_comidas_x_dia = ELT(fn_numero_aleatorio_rangos(1,4), "2","3","4", "5 o mas");
+        
+        set v_variedad_comidas = ELT(fn_numero_aleatorio_rangos(1,4), 'Nunca','Algunas Veces','Normalmente','Siempre');
+        
+        set v_regularidad_carbohidratos = ELT(fn_numero_aleatorio_rangos(1,4), 'Nunca','Algunas Veces','Normalmente','Siempre');
+        
+        set v_grasa_g = ELT(fn_numero_aleatorio_rangos(1,4),'10g','30g','60g','100g o mas');
+        
+        set v_calorias_consumidas = ELT(fn_numero_aleatorio_rangos(1,4),'Menos de 1000 Kcal','1000 Kcal','1500 Kcal','2000 Kcal','2500 Kcal','3000 Kcal','3500 Kcal','4000 Kcal','Mas de 4000 Kcal');
+        
+		insert into preguntas_nutricionales values (
+			v_persona_id,
+            v_comidas_x_dia,
+            v_variedad_comidas,
+            v_regularidad_carbohidratos,
+            v_grasa_g,
+            v_calorias_consumidas
+        );
+		set i = i+1;
+    END WHILE;
+END
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_limpia_bd`(v_password varchar(10))
+    DETERMINISTIC
+BEGIN
+	if v_password = "abcde" then 
+		-- Antes de poder eliminart a las personas tengo que asegurarme que ninguna sucurse
+        UPDATE sucursales set responsable_id = null;
+        
+        -- Eliminamos las valoraciones nutricionales
+        DELETE FROM valoraciones_nutricionales;
+        ALTER TABLE valoraciones_nutricionales AUTO_INCREMENT = 1;
+        
+        -- Eliminamos las valoraciones nutricionales
+        DELETE FROM indicadores_nutricionales;
+        ALTER TABLE indicadores_nutricionales AUTO_INCREMENT = 1;
+        
+        -- Eliminamos el seguimientos de dietas usuarios
+        delete from seguimientos_dietas_usuarios;
+        
+        -- Eliminamos las dietas usuarios
+        delete from dietas_usuarios;
+        ALTER TABLE dietas_usuarios AUTO_INCREMENT = 1;
+        
+		-- Eliminamos las dietas
+        delete from dietas;
+        ALTER TABLE dietas AUTO_INCREMENT = 1;
+        
+        -- eliminamos las preguntas nutricionales 
+        delete from preguntas_nutricionales;
+        
+        -- Despues de haber eliminado a los responsables de las sucursales, eliminamos a los empleados
+        delete from empleados;
+        
+        -- elinamos las membresias_usuarios
+        delete from membresias_usuarios;
+        
+        -- eliminamos los mienbros 
+        delete from miembros;
+        
+        -- eliminamos las membresias 
+        delete from membresias;
+        ALTER TABLE membresias AUTO_INCREMENT = 1;
+        
+        -- eliminamos los usuarios 
+        delete from usuarios;
+        
+        -- entonces procedemos alimpiar a las personas
+		delete from personas;
+        ALTER TABLE personas AUTO_INCREMENT = 1;
+	else
+		select "La contraseña es incorrecta" as Mensaje;
+	end if;
+END
+'''),
+
+    migrations.RunSQL(
+        '''
+        CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_estatus_bd`(v_password varchar(10))
+    DETERMINISTIC
+BEGIN
+	if v_password = "abcde" then 
+		(SELECT "dietas" as Tabla, "Devil", (SELECT COUNT(*) FROM dietas))
+        UNION
+        (SELECT "dietas_usuarios" as Tabla, "Devil, Derivada", (SELECT COUNT(*) FROM dietas_usuarios))
+        UNION
+        (SELECT "empleados" as Tabla, "Débil", (SELECT COUNT(*) FROM empleados))
+        UNION
+        (SELECT "indicadores_nutricionales" as Tabla, "Fuerte, Catálogo", (SELECT COUNT(*) FROM indicadores_nutricionales))
+        UNION
+        (SELECT "membresias" as Tabla, "Débil", (SELECT COUNT(*) FROM membresias))
+        UNION
+        (SELECT "membresias_usuarios" as Tabla, "Débil, Derivada", (SELECT COUNT(*) FROM membresias_usuarios))
+        UNION
+        (SELECT "miembros" as Tabla, "Débil", (SELECT COUNT(*) FROM miembros))
+        UNION
+        (SELECT "personas" as Tabla, "Fuerte", (SELECT COUNT(*) FROM personas))
+        UNION
+        (SELECT "preguntas_nutricionales" as Tabla, "Fuerte, Catálogo", (SELECT COUNT(*) FROM preguntas_nutricionales))
+        UNION
+        (SELECT "seguimientos_dietas_usuarios" as Tabla, "Devil", (SELECT COUNT(*) FROM seguimientos_dietas_usuarios))
+        UNION
+        (SELECT "sucursales" as Tabla, "Débil, Catálogo", (SELECT COUNT(*) FROM sucursales))
+        UNION
+        (SELECT "usuarios" as Tabla, "Débil", (SELECT COUNT(*) FROM usuarios))
+        UNION
+        (SELECT "valoraciones_nutricionales" as Tabla, "Devil, Derivada", (SELECT COUNT(*) FROM valoraciones_nutricionales))
+        UNION
+        (SELECT "bitacora" as Tabla, "Isla", (SELECT COUNT(*) FROM bitacora));
+	else
+		select "La contraseña es incorrecta, no puedo mostrar el estatus de la BD" as Mensaje;
+	end if;
+END
+''')
+ ]
 
