@@ -1783,6 +1783,130 @@ BEGIN
 		select "La contraseña es incorrecta, no puedo mostrar el estatus de la BD" as Mensaje;
 	end if;
 END
+'''),
+
+    migrations.RunSQL(
+        '''
+        ALTER TABLE dietas
+        MODIFY COLUMN ID int unsigned NOT NULL AUTO_INCREMENT COMMENT 'Descripción: Identificador único de la dieta.\nTipo: Numérico (Entero)\nNaturaleza: Cuantitativo\nDominio: Números enteros positivos\nComposición: Autoincremental.',
+        MODIFY COLUMN Nombre varchar(300) NOT NULL COMMENT 'Descripción: Nombre de la dieta.\nTipo: Alfanumérico\nNaturaleza: Cualitativo\nDominio: Texto con hasta 300 caracteres.',
+        MODIFY COLUMN Descripccion text COMMENT 'Descripción: Descripción detallada de la dieta.\nTipo: Alfanumérico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.',
+        MODIFY COLUMN Objetivo text COMMENT 'Descripción: Objetivo de la dieta.\nTipo: Alfanumérico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.',
+        MODIFY COLUMN Restricciones text COMMENT 'Descripción: Restricciones de la dieta.\nTipo: Alfanumérico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.',
+        MODIFY COLUMN Estatus bit(1) NOT NULL DEFAULT b'1' COMMENT 'Descripción: Estatus de la dieta.\nTipo: Binario (Bit)\nNaturaleza: Cualitativo\nDominio: 0 para inactivo, 1 para activo.'
+
+'''),
+
+
+    migrations.RunSQL(
+        '''
+        ALTER TABLE dietas
+        COMMENT 'OWNER: Nutrición\\nCARGADA POR: Adalid, Aldair, Emilio\\nClasificación del Tipo de Tabla: Dévil\\nDescripción de la Tabla: Esta tabla almacena información sobre las dietas disponibles en el sistema. Contiene el nombre de la dieta, descripción, objetivo, restricciones y el estado de la dieta.'
+
+'''),
+
+    migrations.RunSQL(
+        '''
+        ALTER TABLE dietas_usuarios
+        MODIFY COLUMN id int unsigned NOT NULL AUTO_INCREMENT COMMENT 'Descripción: Identificador único de la asignación de dieta a usuario.\nTipo: Numérico (Entero)\nNaturaleza: Cuantitativo\nDominio: Números enteros positivos\nComposición: Autoincremental.',
+        MODIFY COLUMN usuario_id int unsigned DEFAULT NULL COMMENT 'Descripción: ID del usuario al que se asigna la dieta.\nTipo: Numérico (Entero)\nNaturaleza: Cuantitativo\nDominio: Números enteros positivos.',
+        MODIFY COLUMN dieta_id int unsigned DEFAULT NULL COMMENT 'Descripción: ID de la dieta asignada al usuario.\nTipo: Numérico (Entero)\nNaturaleza: Cuantitativo\nDominio: Números enteros positivos.',
+        MODIFY COLUMN fecha_asignacion datetime DEFAULT NULL COMMENT 'Descripción: Fecha y hora de asignación de la dieta al usuario.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora válidos.',
+        MODIFY COLUMN fecha_inicio datetime DEFAULT NULL COMMENT 'Descripción: Fecha y hora de inicio de la dieta para el usuario.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora válidos.',
+        MODIFY COLUMN fecha_fin datetime DEFAULT NULL COMMENT 'Descripción: Fecha y hora de fin de la dieta para el usuario.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora válidos.',
+        MODIFY COLUMN observaciones text COMMENT 'Descripción: Observaciones adicionales sobre la asignación de la dieta.\nTipo: Alfanumérico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.',
+        MODIFY COLUMN estatus bit(1) DEFAULT b'1' COMMENT 'Descripción: Estatus de la asignación de la dieta.\nTipo: Binario (Bit)\nNaturaleza: Cualitativo\nDominio: 0 para inactivo, 1 para activo.'
+
+'''),
+
+
+    migrations.RunSQL(
+        '''
+        ALTER TABLE dietas_usuarios
+        COMMENT 'OWNER: Nutrición\\nCARGADA POR: Adalid, Aldair, Emilio\\nClasificación del Tipo de Tabla:Dévil, Derivada\\nDescripción de la Tabla: Esta tabla almacena las relaciones entre los usuarios y las dietas asignadas. Contiene información sobre el usuario al que se asigna la dieta, la dieta asignada, las fechas de asignación, inicio y fin de la dieta, observaciones adicionales y el estado de la asignación.'
+
+'''),
+
+     migrations.RunSQL(
+        '''
+         ALTER TABLE indicadores_nutricionales
+        MODIFY COLUMN id int unsigned NOT NULL AUTO_INCREMENT COMMENT 'Descripción: Identificador único del indicador nutricional.\nTipo: Numérico (Entero)\nNaturaleza: Cuantitativo\nDominio: Números enteros positivos\nComposición: Autoincremental.',
+        MODIFY COLUMN Edad int unsigned DEFAULT NULL COMMENT 'Descripción: Edad del usuario para el cálculo de los indicadores.\nTipo: Numérico (Entero)\nNaturaleza: Cuantitativo\nDominio: Números enteros positivos.',
+        MODIFY COLUMN IMC decimal(5,3) DEFAULT NULL COMMENT 'Descripción: Índice de Masa Corporal del usuario.\nTipo: Numérico (Decimal)\nNaturaleza: Cuantitativo\nDominio: Números decimales positivos.',
+        MODIFY COLUMN circunferencia_cintura decimal(5,2) DEFAULT NULL COMMENT 'Descripción: Circunferencia de la cintura del usuario.\nTipo: Numérico (Decimal)\nNaturaleza: Cuantitativo\nDominio: Números decimales positivos.',
+        MODIFY COLUMN nivel_nutriente_sangre text COMMENT 'Descripción: Nivel de nutrientes en la sangre del usuario.\nTipo: Alfanumérico (Texto)\nNaturaleza: Cualitativo\nDominio: Texto.'
+
+'''),
+
+
+     migrations.RunSQL(
+        '''
+        ALTER TABLE indicadores_nutricionales
+        COMMENT 'OWNER: Nutrición\\nCARGADA POR: Adalid, Aldair, Emilio\\nClasificación del Tipo de Tabla:Fuerte, Catálogo\\nDescripción de la Tabla: Esta tabla almacena información sobre los indicadores nutricionales utilizados para evaluar la salud de los usuarios. Contiene detalles como la edad, el índice de masa corporal (IMC), la circunferencia de la cintura, y el nivel de nutrientes en la sangre.'
+
+'''),
+
+    migrations.RunSQL(
+        '''
+        ALTER TABLE valoraciones_nutricionales
+        MODIFY COLUMN id int unsigned NOT NULL AUTO_INCREMENT COMMENT 'Descripción: Identificador único de la valoración nutricional.\nTipo: Numérico (Entero)\nNaturaleza: Cuantitativo\nDominio: Números enteros positivos.\nComposición: Autoincremental.',
+        MODIFY COLUMN usuario_id int unsigned DEFAULT NULL COMMENT 'Descripción: Identificador único del usuario al que se le realizó la valoración nutricional.\nTipo: Numérico (Entero)\nNaturaleza: Cuantitativo\nDominio: Números enteros positivos.\nRestricción: Clave foránea, se relaciona con la tabla de usuarios.',
+        MODIFY COLUMN indicador_nutricional_id int unsigned DEFAULT NULL COMMENT 'Descripción: Identificador único del indicador nutricional evaluado en la valoración.\nTipo: Numérico (Entero)\nNaturaleza: Cuantitativo\nDominio: Números enteros positivos.\nRestricción: Clave foránea, se relaciona con la tabla de indicadores nutricionales.',
+        MODIFY COLUMN valor varchar(20) NOT NULL COMMENT 'Descripción: Valor asignado al indicador nutricional en la valoración.\nTipo: Alfanumérico\nNaturaleza: Cualitativo\nDominio: Cadena de texto con hasta 20 caracteres.',
+        MODIFY COLUMN fecha_valoracion datetime DEFAULT NULL COMMENT 'Descripción: Fecha y hora en que se realizó la valoración nutricional.\nTipo: Fecha y hora\nNaturaleza: Cuantitativo\nDominio: Valores de fecha y hora válidos.',
+        MODIFY COLUMN empleado_id int unsigned DEFAULT NULL COMMENT 'Descripción: Identificador único del empleado que realizó la valoración nutricional.\nTipo: Numérico (Entero)\nNaturaleza: Cuantitativo\nDominio: Números enteros positivos.\nRestricción: Clave foránea, se relaciona con la tabla de empleados.',
+        MODIFY COLUMN comentarios text COMMENT 'Descripción: Comentarios adicionales o notas sobre la valoración nutricional.\nTipo: Alfanumérico\nNaturaleza: Cualitativo\nDominio: Texto de longitud variable.'
+
+'''),
+
+
+    migrations.RunSQL(
+        '''
+        ALTER TABLE valoraciones_nutricionales
+        COMMENT 'OWNER: Nutrición\\nCARGADA POR: Adalid, Aldair, Emilio\\nClasificación del Tipo de Tabla: Dévil, Derivada\\nDescripción de la Tabla: Almacena valoraciones nutricionales realizadas a usuarios, incluyendo indicadores nutricionales, valores, fecha de valoración, empleado que realizó la valoración y comentarios.'
+
+'''),
+
+
+    migrations.RunSQL(
+        '''
+        ALTER TABLE seguimientos_dietas_usuarios
+        MODIFY COLUMN dieta_usuario_id int unsigned DEFAULT NULL COMMENT 'Descripción: Identificador único de la dieta asignada al usuario.\nTipo: Numérico (Entero)\nNaturaleza: Cuantitativo\nDominio: Números enteros positivos.\nRestricción: Clave foránea, se relaciona con la tabla de dietas_usuarios.',
+        MODIFY COLUMN descripcion text COMMENT 'Descripción: Descripción del seguimiento de la dieta.\nTipo: Alfanumérico\nNaturaleza: Cualitativo\nDominio: Texto de longitud variable.',
+        MODIFY COLUMN empleado_id int unsigned DEFAULT NULL COMMENT 'Descripción: Identificador único del empleado responsable del seguimiento.\nTipo: Numérico (Entero)\nNaturaleza: Cuantitativo\nDominio: Números enteros positivos.\nRestricción: Clave foránea, se relaciona con la tabla de empleados.',
+        MODIFY COLUMN estatus enum('Programada','Iniciada','Seguimiento','Suspendida','Finalizada') DEFAULT NULL COMMENT 'Descripción: Estado actual del seguimiento de la dieta.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Programada, Iniciada, Seguimiento, Suspendida, Finalizada}',
+        MODIFY COLUMN porcentaje_avance enum('0% a 10%','11% a 20%','21% a 30%','31% a 40%','41% a 50%','51% a 60%','61% a 70%','71% a 80%','81% a 90%','91% a 100%') DEFAULT NULL COMMENT 'Descripción: Porcentaje de avance del seguimiento de la dieta.\nTipo: Enumerado\nNaturaleza: Cuantitativo\nDominio: {"0% a 10%", "11% a 20%", "21% a 30%", "31% a 40%", "41% a 50%", "51% a 60%", "61% a 70%", "71% a 80%", "81% a 90%", "91% a 100%"}'
+
+'''),
+
+
+    migrations.RunSQL(
+        '''
+        connection.execute(text('''
+        ALTER TABLE seguimientos_dietas_usuarios
+        COMMENT 'OWNER: Nutrición\\nCARGADA POR: Adalid, Aldair, Emilio\\nClasificación del Tipo de Tabla:Dévil, Derivada\\nDescripción de la Tabla: Registra el seguimiento de las dietas asignadas a los usuarios, incluyendo descripción, empleado responsable, estado y porcentaje de avance.'
+
+'''),
+
+
+    migrations.RunSQL(
+        '''
+        ALTER TABLE preguntas_nutricionales
+        MODIFY COLUMN persona_id int unsigned DEFAULT NULL COMMENT 'Descripción: Identificador único de la persona a la que se le han hecho las preguntas nutricionales.\nTipo: Numérico (Entero)\nNaturaleza: Cuantitativo\nDominio: Números enteros positivos.\nRestricción: Clave foránea, se relaciona con la tabla de personas.',
+        MODIFY COLUMN comidas_x_dia enum('2','3','4','5 o mas') DEFAULT NULL COMMENT 'Descripción: Número de comidas que la persona consume en un día.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {2, 3, 4, 5 o más}',
+        MODIFY COLUMN variedad_comidas enum('Nunca','Algunas Veces','Normalmente','Siempre') DEFAULT NULL COMMENT 'Descripción: Frecuencia con la que la persona consume una variedad de comidas.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Nunca, Algunas veces, Normalmente, Siempre}',
+        MODIFY COLUMN regularidad_carbohidratos enum('Nunca','Algunas Veces','Normalmente','Siempre') DEFAULT NULL COMMENT 'Descripción: Frecuencia con la que la persona consume carbohidratos.\nTipo: Enumerado\nNaturaleza: Cualitativo\nDominio: {Nunca, Algunas veces, Normalmente, Siempre}',
+        MODIFY COLUMN grasa_g enum('10g','30g','60g','100g o mas') DEFAULT NULL COMMENT 'Descripción: Cantidad de grasa en gramos que la persona consume.\nTipo: Enumerado\nNaturaleza: Cuantitativo\nDominio: {10g, 30g, 60g, 100g o más}',
+        MODIFY COLUMN calorias_consumidas enum('Menos de 1000 Kcal','1000 Kcal','1500 Kcal','2000 Kcal','2500 Kcal','3000 Kcal','3500 Kcal','4000 Kcal','Mas de 4000 Kcal') DEFAULT NULL COMMENT 'Descripción: Cantidad de calorías consumidas por la persona.\\nTipo: Enumerado\\nNaturaleza: Cuantitativo\\nDominio: {Menos de 1000 Kcal, 1000 Kcal, 1500 Kcal, 2000 Kcal, 2500 Kcal, 3000 Kcal, 3500 Kcal, 4000 Kcal, Más de 4000 Kcal}'
+
+'''),
+
+
+    migrations.RunSQL(
+        '''
+        ALTER TABLE preguntas_nutricionales
+        COMMENT 'OWNER: Nutrición\\nCARGADA POR: Adalid, Aldair, Emilio\\nClasificación del Tipo de Tabla: Fuerte, Catálogo\\nDescripción de la Tabla: Almacena respuestas a preguntas relacionadas con la nutrición de los usuarios, como la cantidad de comidas por día, la variedad de comidas, el consumo de carbohidratos, etc.'
+
 ''')
  ]
 
