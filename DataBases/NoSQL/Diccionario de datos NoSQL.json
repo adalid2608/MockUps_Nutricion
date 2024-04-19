@@ -1,5 +1,5 @@
 {
-  "numero_expediente": "String", // Número único de expediente del paciente
+  "numero_expediente": "String",  // Número único de expediente del paciente
   "ficha_identificacion": { 
     "nombre_completo": {
       "nombres": "String", // Nombre(s) del usuario
