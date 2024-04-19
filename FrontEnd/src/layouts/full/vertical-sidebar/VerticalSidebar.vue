@@ -17,7 +17,7 @@ const authStore = useAuthStore();
     <v-navigation-drawer left v-model="customizer.Sidebar_drawer" elevation="0" rail-width="75" 
         app class="leftSidebar" :rail="customizer.mini_sidebar" expand-on-hover width="256">
         <div class="pa-5 pl-4">
-            <Logo />
+            <img src="/src/assets/images/logos/bull´s logo.png" alt="" class="logo">
         </div>
         <!-- ---------------------------------------------- -->
         <!---Navigation -->
@@ -38,3 +38,9 @@ const authStore = useAuthStore();
         </perfect-scrollbar>
     </v-navigation-drawer>
 </template>
+
+<style>
+    .logo{
+        width: 100%;
+    }
+</style>
