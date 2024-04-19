@@ -92,5 +92,10 @@ bienestar de los usuarios.
 - RN19. Regla de renovación: Los clientes deben ser informados sobre la renovación automática de sus membresías y tienen derecho a cancelar esta renovación con anticipación.
 - RN20. Regla de comunicación: El gimnasio debe proporcionar canales de comunicación claros para que los clientes puedan hacer preguntas, plantear inquietudes o brindar comentarios sobre su experiencia.
 
+# Enlace hacia el archivo del Modelo de la coleccion NoSQL
+- [Colección NoSQL](https://github.com/adalid2608/MockUps_Nutricion/blob/master/DataBases/NoSQL/DB%20NoSQL%20Restricciones%20Medicas.json)
+
 # Modelo de la base de datos SQL: 
   ![Modelo de la base de datos SQL](https://github.com/adalid2608/MockUps_Nutricion/blob/master/img/SQLDiagramaNutricion.png)
+
+***
