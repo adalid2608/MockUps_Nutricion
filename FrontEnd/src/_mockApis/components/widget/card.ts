@@ -26,10 +26,18 @@ import img1 from '@/assets/images/blog/blog-img1.jpg';
 import img2 from '@/assets/images/blog/blog-img2.jpg';
 import img3 from '@/assets/images/blog/blog-img3.jpg';
 /*--Products Cards Images--*/
-import proimg1 from '@/assets/images/products/s4.jpg';
-import proimg2 from '@/assets/images/products/s5.jpg';
-import proimg3 from '@/assets/images/products/s4.jpg';
-import proimg4 from '@/assets/images/products/s11.jpg';
+import proimg1 from '@/assets/images/dietas/Mediterranea2.jpg';
+import proimg2 from '@/assets/images/dietas/Vegetariana.jpg';
+import proimg3 from '@/assets/images/dietas/Vegana.jpg';
+import proimg4 from '@/assets/images/dietas/Paleo.jpg';
+import proimg5 from '@/assets/images/dietas/Catogenica.jpg';
+import proimg6 from '@/assets/images/dietas/Sin-gluten.jpg';
+import proimg7 from '@/assets/images/dietas/Baja-carbohidratos.jpg';
+import proimg8 from '@/assets/images/dietas/Baja-grasa.jpg';
+import proimg9 from '@/assets/images/dietas/DASH.jpg';
+import proimg10 from '@/assets/images/dietas/Ayuno.jpg';
+import proimg11 from '@/assets/images/dietas/Crudos.jpg';
+import proimg12 from '@/assets/images/dietas/FODMAP.jpeg';
 /*--Payment gateways--*/
 import icon1 from "@/assets/images/svgs/icon-paypal.svg";
 import icon2 from "@/assets/images/svgs/icon-office-bag.svg";
@@ -117,7 +125,7 @@ const musicCard: musicCards[] = [
 /*--Products Cards--*/
 const productsCard: productsCards[] = [
     {
-        title: 'Boat Headphone',
+        title: 'Dieta Mediterranea',
         link: '/',
         photo: proimg1,
         salesPrice: 375,
@@ -125,7 +133,7 @@ const productsCard: productsCards[] = [
         rating: 4
     },
     {
-        title: 'MacBook Air Pro',
+        title: 'Dieta Vegetariana',
         link: '/',
         photo: proimg2,
         salesPrice: 650,
@@ -133,7 +141,7 @@ const productsCard: productsCards[] = [
         rating: 5
     },
     {
-        title: 'Red Valvet Dress',
+        title: 'Dieta Vegana',
         link: '/',
         photo: proimg3,
         salesPrice: 150,
@@ -141,9 +149,73 @@ const productsCard: productsCards[] = [
         rating: 3
     },
     {
-        title: 'Cute Soft Teddybear',
+        title: 'Dieta Paleo',
         link: '/',
         photo: proimg4,
+        salesPrice: 285,
+        price: 345,
+        rating: 2
+    },
+    {
+        title: 'Dieta Cetogénica',
+        link: '/',
+        photo: proimg5,
+        salesPrice: 375,
+        price: 285,
+        rating: 4
+    },
+    {
+        title: 'Dieta sin gluten',
+        link: '/',
+        photo: proimg6,
+        salesPrice: 650,
+        price: 900,
+        rating: 5
+    },
+    {
+        title: 'Dieta baja en carbohidratos',
+        link: '/',
+        photo: proimg7,
+        salesPrice: 150,
+        price: 200,
+        rating: 3
+    },
+    {
+        title: 'Dieta baja en grasas',
+        link: '/',
+        photo: proimg8,
+        salesPrice: 285,
+        price: 345,
+        rating: 2
+    },
+    {
+        title: 'Dieta DASH',
+        link: '/',
+        photo: proimg9,
+        salesPrice: 375,
+        price: 285,
+        rating: 4
+    },
+    {
+        title: 'Dieta de ayuno intermitente',
+        link: '/',
+        photo: proimg10,
+        salesPrice: 650,
+        price: 900,
+        rating: 5
+    },
+    {
+        title: 'Dieta de alimentos crudos ',
+        link: '/',
+        photo: proimg11,
+        salesPrice: 150,
+        price: 200,
+        rating: 3
+    },
+    {
+        title: 'Dieta baja en FODMAP',
+        link: '/',
+        photo: proimg12,
         salesPrice: 285,
         price: 345,
         rating: 2
