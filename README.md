@@ -91,3 +91,6 @@ bienestar de los usuarios.
 - RN18. Regla de invitados: Se puede permitir que los miembros traigan invitados según las políticas establecidas, como un límite de veces por mes o una tarifa adicional.
 - RN19. Regla de renovación: Los clientes deben ser informados sobre la renovación automática de sus membresías y tienen derecho a cancelar esta renovación con anticipación.
 - RN20. Regla de comunicación: El gimnasio debe proporcionar canales de comunicación claros para que los clientes puedan hacer preguntas, plantear inquietudes o brindar comentarios sobre su experiencia.
+
+# Modelo de la base de datos SQL: 
+  [Modelo de la base de datos SQL](https://github.com/adalid2608/MockUps_Nutricion/blob/master/img/DiagramaSQL.png)
