@@ -45,7 +45,7 @@ const breadcrumbs = ref([
                     <h6 class="text-subtitle-1 text-13 py-4 textSecondary">
                         You have earned 54% more than last month which is great thing.
                     </h6>
-                    <v-btn flat color="primary">Check</v-btn>
+                    <v-btn flat color="success">Check</v-btn>
                 </v-col>
                 <v-col cols="12" sm="5">
                     <div class="mb-n2">

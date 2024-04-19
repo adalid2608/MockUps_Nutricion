@@ -37,6 +37,66 @@ const BasicDatatables: Datatables[] = [
         nombre: 'Osiel',
         instructor: 'Alonso',
         status: 'Pausada'
+    },
+    {
+        dieta: 'Mediterranea',
+        nombre: 'Marcos',
+        instructor: 'Max',
+        status: 'Activa'
+    },
+    {
+        dieta: 'Modificada en Calorias',
+        nombre: 'Josmar',
+        instructor: 'Jorge',
+        status: 'Pausada'
+    },
+    {
+        dieta: 'DASH',
+        nombre: 'Josue',
+        instructor: 'Sandra',
+        status: 'Activa'
+    },
+    {
+        dieta: 'Mediterranea',
+        nombre: 'Juan Luis',
+        instructor: 'Jesus',
+        status: 'Asignada'
+    },
+    {
+        dieta: 'Modificada en carbohidratos',
+        nombre: 'Carlos',
+        instructor: 'Alonso',
+        status: 'Pausada'
+    },
+    {
+        dieta: 'Mediterranea',
+        nombre: 'Alan',
+        instructor: 'Max',
+        status: 'Activa'
+    },
+    {
+        dieta: 'Modificada en Calorias',
+        nombre: 'Joaquin',
+        instructor: 'Jorge',
+        status: 'Pausada'
+    },
+    {
+        dieta: 'DASH',
+        nombre: 'Ares',
+        instructor: 'Sandra',
+        status: 'Activa'
+    },
+    {
+        dieta: 'Mediterranea',
+        nombre: 'Emili',
+        instructor: 'Jesus',
+        status: 'Asignada'
+    },
+    {
+        dieta: 'Modificada en carbohidratos',
+        nombre: 'Maria Juana',
+        instructor: 'Alonso',
+        status: 'Pausada'
     }
 ];
 
