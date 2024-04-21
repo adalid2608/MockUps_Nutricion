@@ -1,6 +1,8 @@
 from rest_framework import viewsets
 from .models import tbl_cliente,tbl_rol
 from .serializer import *
+from pymongo import  MongoClient
+from django.http import JsonResponse
 
 class tbl_clienteViewSet(viewsets.ModelViewSet):
 	queryset = tbl_cliente.objects.all()
@@ -63,7 +65,21 @@ class miembrosviewset(viewsets.ModelViewSet):
 	serializer_class = miembrosserealizer
  
 
+def ObtenerHistoriales(req):
+	conexion = MongoClient("mongodb://localhost:27017")
+	bd = conexion["gimnasio"]
+	col = bd["historiales_medicos"]
+	data = list(col.find())
+
+	nuevo_arreglo = []
+
+	# Recorre cada documento obtenido y estructúralo en el formato deseado
+	for documento in data:
+		nuevo_arreglo.append({
+			"numero_expediente": documento["numero_expediente"],
+			"ficha_identificacion": documento["ficha_identificacion"]
+		})
 
 
-
+	return JsonResponse(nuevo_arreglo, safe=False)
 
