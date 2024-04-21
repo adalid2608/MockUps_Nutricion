@@ -87,7 +87,7 @@ function getColor(status: string) {
                     <template v-slot:expanded-row="{ columns, item }">
                         <tr>
                             <td :colspan="columns.length">
-                                More info about {{ item.name }}
+                                More info about
                             </td>
                         </tr>
                     </template>
