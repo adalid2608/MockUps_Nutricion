@@ -29,6 +29,27 @@ class Migration(migrations.Migration):
             DROP TRIGGER IF EXISTS preguntas_nutricionales_AFTER_INSERT;
             DROP TRIGGER IF EXISTS preguntas_nutricionales_AFTER_UPDATE;
             DROP TRIGGER IF EXISTS preguntas_nutricionales_AFTER_DELETE;
+            DROP FUNCTION IF EXISTS fn_genera_bandera_porcentaje;
+            DROP FUNCTION IF EXISTS fn_numero_aleatorio_rangos;
+            DROP FUNCTION IF EXISTS fn_genera_titulo_cortesia;
+            DROP FUNCTION IF EXISTS fn_genera_nombre;
+            DROP FUNCTION IF EXISTS fn_genera_Apellido;
+            DROP FUNCTION IF EXISTS fn_genera_fecha_nacimiento;
+            DROP FUNCTION IF EXISTS fn_genera_sangre;
+            DROP FUNCTION IF EXISTS fn_genera_fecha_registro;
+            DROP FUNCTION IF EXISTS fn_numero_aleatorio_decimal;
+            DROP FUNCTION IF EXISTS fn_genera_nl_nutriente;
+            DROP FUNCTION IF EXISTS fn_generar_codigo_aleatorio;
+            DROP FUNCTION IF EXISTS fn_calcular_fin;
+            DROP FUNCTION IF EXISTS fn_calcula_antiguedad;
+            DROP FUNCTION IF EXISTS fn_genera_comentarios_nutricionales;
+            DROP FUNCTION IF EXISTS fn_genera_decripcion_dieta;
+            DROP FUNCTION IF EXISTS fn_genera_objetivos_dieta;
+            DROP FUNCTION IF EXISTS fn_genera_observaciones_dieta;
+            DROP FUNCTION IF EXISTS fn_genera_restricciones_dieta;
+
+
+
             '''
         ),
 
@@ -1025,6 +1046,5 @@ BEGIN
 RETURN v_observaciones;
 END
 ''')
-
-    ]
+ ]
 
