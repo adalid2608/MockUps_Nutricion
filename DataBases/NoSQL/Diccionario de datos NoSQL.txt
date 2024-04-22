@@ -1,0 +1,72 @@
+{
+  "numero_expediente": "String",  /* Número único de expediente del usuario*/
+  "ficha_identificacion": { 
+    "nombre_completo": {
+      "nombres": "String", /* Nombre(s) del usuario */
+      "primer_apellido": "String", /* Primer apellido del usuario */
+      "segundo_apellido": "String" /* Segundo apellido del usuario */
+    },
+    "curp": { 
+      "car_pa": "String", /* Primeras dos letras del primer apellido */
+      "car_sa": "String", /* Primera letra del segundo apellido */
+      "car_n": "String", /* Primera letra del nombre */
+      "anio_n": "String", /* Últimos dos dígitos del año de nacimiento */
+      "mes_n": "String", /* Dos dígitos del mes de nacimiento */
+      "dia_n": "String", /* Dos dígitos del día de nacimiento */
+      "car_g": "String", /* Letra del género (H para hombre, M para mujer) */
+      "car_efn": "String", /* Dos letras del estado de nacimiento */
+      "car_ipa": "String", /* Primera vocal interna del primer apellido */
+      "car_isa": "String", /* Primera letra interna del segundo apellido */
+      "car_in": "String", /* Primera letra interna del nombre */
+      "dif": "String" /* Dos caracteres, letras o números diferenciador */
+    },
+    "fecha_nacimiento": "Date", /* Fecha de nacimiento del usuario */
+    "edad": "Number", /* Edad del usuario */
+    "genero": "String", /* Género del usuario */
+    "estado_civil": "String", /* Estado civil del usuario */
+    "ocupacion": "String", /* Ocupación del usuario */
+    "tipo_sangre": "String", /* Tipo de sangre del usuario */
+    "alergias": ["String"], /* Lista de alergias del usuario */
+    "numero_telefonico_paciente": "String", /* Número telefónico del usuario */
+    "numero_telefonico_familiar": "String", /* Número telefónico de un familiar o conocido */
+    "correo_electronico_paciente": "String", /* Correo electrónico del usuario */
+    "restricciones_medicas": [
+      {
+        "tipo_restriccion": "String", /* Tipo de restricción médica */
+        "descripcion": "String", /* Descripción de la restricción médica */
+        "gravedad": "String", /* Gravedad de la restricción médica */
+        "fecha_diagnostico": "Date", /* Fecha de diagnóstico de la restricción médica */
+        "notas_adicionales": "String", /* Notas adicionales sobre la restricción médica */
+        "estado_restriccion": "String" /* Estado de la restricción médica (Activa/Inactiva) */
+      }
+    ],
+    "ejercicio_fisico": { 
+      "frecuencia": "String", /* Frecuencia del ejercicio físico */
+      "tipo": "String", /* Tipo de ejercicio físico */
+      "duracion": "String", /* Duración del ejercicio físico */
+      "intensidad": "String" /* Intensidad del ejercicio físico */
+    },
+    "dieta_actual": { 
+      "tipo_dieta": "String", /* Tipo de dieta */
+      "descripcion": "String", /* Descripción de la dieta */
+      "fecha_inicio": "Date", /* Fecha de inicio de la dieta */
+      "notas_adicionales": "String" /* Notas adicionales sobre la dieta */
+    },
+    "medicamentos_actuales": [
+      {
+        "nombre_medicamento": "String", /* Nombre del medicamento
+        "dosis": "String", /* Dosis del medicamento */
+        "frecuencia": "String", /* Frecuencia del medicamento */
+        "fecha_inicio": "Date", /* Fecha de inicio del medicamento */
+        "notas_adicionales": "String" /* Notas adicionales sobre el medicamento */
+      }
+    ],
+    "habitos_alimenticios": {
+      "tipo_dieta": "String", /* Tipo de dieta habitual
+      "frecuencia_comidas": "String", /* Frecuencia de las comidas
+      "preferencias": ["String"], /* Lista de alimentos preferidos
+      "alimentos_evitados": ["String"], /* Lista de alimentos evitados
+      "suplementos": ["String"] /* Lista de suplementos alimenticios
+    }
+  }
+}
