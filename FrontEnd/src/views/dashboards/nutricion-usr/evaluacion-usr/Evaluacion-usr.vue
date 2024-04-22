@@ -52,7 +52,7 @@ const slider5 = ref(0);
                   </v-col>
                   <v-col cols="12" sm="9">
                       <v-select
-                          v-model="select"
+                          
                           :items="location"
                           item-title="state"
                           item-value="abbr"
