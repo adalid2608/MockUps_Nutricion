@@ -100,9 +100,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': 'localhost',
         'USER': 'root',
-        'PASSWORD': 'Sagitario96',
+        'PASSWORD': 'Adalid26.',
         'PORT': '3306',
         'NAME': 'gimnasio',
+        # 'HOST': 'integradora-gimnasio-2024-8b.online',
+        # 'USER': 'Nutricion',
+        # 'PASSWORD': 'nutricion123*.',
+        # 'PORT': '3306',
+        # 'NAME': 'gimnasio',
     }
 }
 

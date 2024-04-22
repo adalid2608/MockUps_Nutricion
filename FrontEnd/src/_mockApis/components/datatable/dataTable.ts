@@ -1,104 +1,22 @@
 
 import type { Datatables,SelectedRowDatatable,filtrable } from '@/types/components/datatables/index';
-
+import axios from '@/utils/axios';
 import img1 from '@/assets/images/blog/blog-img1.jpg';
 import img2 from '@/assets/images/blog/blog-img2.jpg';
 import img3 from '@/assets/images/blog/blog-img3.jpg';
 import img4 from '@/assets/images/blog/blog-img4.jpg';
 import img5 from '@/assets/images/blog/blog-img5.jpg';
 
-const BasicDatatables: Datatables[] = [
-    {
-        dieta: 'Mediterranea',
-        nombre: 'Adalid',
-        instructor: 'Max',
-        status: 'Activa'
-    },
-    {
-        dieta: 'Modificada en Calorias',
-        nombre: 'Aldair',
-        instructor: 'Jorge',
-        status: 'Pausada'
-    },
-    {
-        dieta: 'DASH',
-        nombre: 'Arely',
-        instructor: 'Sandra',
-        status: 'Activa'
-    },
-    {
-        dieta: 'Mediterranea',
-        nombre: 'Emilio',
-        instructor: 'Jesus',
-        status: 'Asignada'
-    },
-    {
-        dieta: 'Modificada en carbohidratos',
-        nombre: 'Osiel',
-        instructor: 'Alonso',
-        status: 'Pausada'
-    },
-    {
-        dieta: 'Mediterranea',
-        nombre: 'Marcos',
-        instructor: 'Max',
-        status: 'Activa'
-    },
-    {
-        dieta: 'Modificada en Calorias',
-        nombre: 'Josmar',
-        instructor: 'Jorge',
-        status: 'Pausada'
-    },
-    {
-        dieta: 'DASH',
-        nombre: 'Josue',
-        instructor: 'Sandra',
-        status: 'Activa'
-    },
-    {
-        dieta: 'Mediterranea',
-        nombre: 'Juan Luis',
-        instructor: 'Jesus',
-        status: 'Asignada'
-    },
-    {
-        dieta: 'Modificada en carbohidratos',
-        nombre: 'Carlos',
-        instructor: 'Alonso',
-        status: 'Pausada'
-    },
-    {
-        dieta: 'Mediterranea',
-        nombre: 'Alan',
-        instructor: 'Max',
-        status: 'Activa'
-    },
-    {
-        dieta: 'Modificada en Calorias',
-        nombre: 'Joaquin',
-        instructor: 'Jorge',
-        status: 'Pausada'
-    },
-    {
-        dieta: 'DASH',
-        nombre: 'Ares',
-        instructor: 'Sandra',
-        status: 'Activa'
-    },
-    {
-        dieta: 'Mediterranea',
-        nombre: 'Emili',
-        instructor: 'Jesus',
-        status: 'Asignada'
-    },
-    {
-        dieta: 'Modificada en carbohidratos',
-        nombre: 'Maria Juana',
-        instructor: 'Alonso',
-        status: 'Pausada'
-    }
+
+let BasicDatatables: Datatables[] = [
+    
 ];
+
+await axios.get ('http://127.0.0.1:8000/gimnasio/api/v1dietas/').then(res => {
+    BasicDatatables = res.data
+        console.log(BasicDatatables)
+    }
+)
 
 const SelectedRow: SelectedRowDatatable[] = [
     {

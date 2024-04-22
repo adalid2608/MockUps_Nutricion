@@ -4,7 +4,7 @@ import BaseBreadcrumb from '@/components/shared/BaseBreadcrumb.vue';
 import UiParentCard from '@/components/shared/UiParentCard.vue';
 import { BasicDatatables } from '@/_mockApis/components/datatable/dataTable';
 
-const page = ref({ title: 'Seguimiento de Dietas' });
+const page = ref({ title: 'Información de Dietas' });
 const breadcrumbs = ref([
     {
         text: 'Dietas',
@@ -12,7 +12,7 @@ const breadcrumbs = ref([
         href: '#'
     },
     {
-        text: 'Seguimiento',
+        text: 'Información',
         disabled: true,
         href: '#'
     }
