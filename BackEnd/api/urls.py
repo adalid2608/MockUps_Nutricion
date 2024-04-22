@@ -1,6 +1,7 @@
 from django.urls import path,include
 from rest_framework import routers
 from api import views
+from .views import *
 
 router = routers.DefaultRouter()
 router.register(r'tbl_cliente', views.tbl_clienteViewSet)
@@ -19,7 +20,9 @@ router.register(r'membresias', views.membresiasviewset)
 router.register(r'membresias_usuarios', views.membresias_usuariosviewset)
 router.register(r'miembros', views.miembrosviewset)
 
+
 urlpatterns = [
-	path('api/v1',include(router.urls))
+	path('api/v1',include(router.urls)),
+	path('',ObtenerHistoriales)
 ]
 

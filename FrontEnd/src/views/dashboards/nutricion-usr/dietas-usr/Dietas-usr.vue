@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { productsCard } from '@/_mockApis/components/widget/card';
+
 </script>
 <template>
     <v-row>
