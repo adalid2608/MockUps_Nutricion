@@ -69,7 +69,7 @@ function validate(values: any, { setErrors }: any) {
                 >
             </div>
         </div>
-        <v-btn size="large" :loading="isSubmitting":disabled="valid" block type="submit" flat class="fondo text">Sign In</v-btn>
+        <v-btn size="large" :loading="isSubmitting":disabled="valid" block type="submit" flat class="red text">Sign In</v-btn>
         <div v-if="errors.apiError" class="mt-2">
             <v-alert color="error">{{ errors.apiError }}</v-alert>
         </div>

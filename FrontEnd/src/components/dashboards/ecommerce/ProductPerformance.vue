@@ -30,7 +30,7 @@ import { productPerformanceData } from "@/_mockApis/components/dashboards/Ecomme
                             <td>
                                 <div v-if="item.percent >= 40">
                                     <h6 class="font-weight-medium text-body-1 mb-1">Buen seguimiento</h6>
-                                    <v-progress-linear color="secondary" background-color="grey lighten-3"
+                                    <v-progress-linear color="#008f39" background-color="grey lighten-3"
                                         :model-value="item.percent" rounded class="mb-1"></v-progress-linear>
                                     <span class="text-body-1 text-medium-emphasis">
                                         {{ item.percent }}% de Avance
@@ -38,7 +38,7 @@ import { productPerformanceData } from "@/_mockApis/components/dashboards/Ecomme
                                 </div>
                                 <div v-else>
                                     <h6 class="font-weight-medium text-body-1 mb-1">Poco Seguimiento</h6>
-                                    <v-progress-linear color="primary" background-color="primary lighten-3"
+                                    <v-progress-linear color="#ff1b14"background-color="primary lighten-3"
                                         :model-value="item.percent" rounded class="mb-1"></v-progress-linear>
                                     <span class="text-body-1 text-medium-emphasis">
                                         {{ item.percent }}% de Avance

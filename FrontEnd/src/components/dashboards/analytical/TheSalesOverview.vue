@@ -5,22 +5,23 @@ import { getPrimary, getSecondary } from '@/utils/UpdateColors';
 const chartOptions = computed(() => {
   return {
     series: [
-      { name: "Mujeres", data: [355, 390, 300, 350, 390, 180] },
-      { name: "Hombres", data: [280, 250, 325, 215, 250, 310] },
+      { name: "Evaluaciones Nutricionales", data: [200, 150, 320, 250, 490, 180, 280, 250, 325, 215, 250, 310] },
+      { name: "Dietas", data: [100, 350, 225, 115, 240, 310, 280, 150, 225, 315, 150, 210] },
     ],
     grid: {
       show: false,
       borderColor: "transparent",
       padding: { left:10, right: 0, bottom: 0 },
+
     },
     plotOptions: {
-      bar: { horizontal: false, columnWidth: "42%", borderRadius: 5 },
+      bar: { horizontal: false, columnWidth: "50%", borderRadius: 5 },
     },
-    colors: [getPrimary.value, getSecondary.value],
+    colors: ['#000', '#ff1b14'],
     fill: { type: "solid", opacity: 1 },
     chart: {
       type: "bar",
-      height: 270,
+      height: 570,
       offsetX: -15,
       toolbar: { show: false },
       foreColor: "#adb0bb",
@@ -33,7 +34,7 @@ const chartOptions = computed(() => {
     legend: { show: false },
     xaxis: {
       type: "category",
-      categories: ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"],
+      categories: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
       labels: {
         style: { cssClass: "grey--text lighten-2--text fill-color" },
       },
@@ -44,7 +45,7 @@ const chartOptions = computed(() => {
     yaxis: {
       show: true,
       min: 100,
-      max: 400,
+      max: 500,
       tickAmount: 3,
       labels: {
         style: {
@@ -79,19 +80,19 @@ const chartOptions = computed(() => {
         <div class="ml-auto">
           <div class="d-flex align-center">
             <div class="d-flex align-center px-2">
-              <span class="text-primary">
+              <span style="color:#000">
                 <span class="text-overline">
                   <i class="mdi mdi-brightness-1 mx-1"></i>
                 </span>
-                <span class="text-subtitle-1">Mujeres</span>
+                <span class="text-subtitle-1">Evaluaciones Nutricionales</span>
               </span>
             </div>
             <div class="d-flex align-center px-2">
-              <span class="text-secondary">
+              <span style="color:#ff1b14">
                 <span class="text-overline">
                   <i class="mdi mdi-brightness-1 mx-1"></i>
                 </span>
-                <span class="text-subtitle-1">Hombres</span>
+                <span class="text-subtitle-1">Dietas</span>
               </span>
             </div>
           </div>
