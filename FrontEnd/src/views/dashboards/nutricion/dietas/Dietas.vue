@@ -18,9 +18,6 @@ const breadcrumbs = ref([
     }
 ]);
 
-
-
-
 </script>
 <template>
     <BaseBreadcrumb :title="page.title" :breadcrumbs="breadcrumbs"></BaseBreadcrumb>
@@ -31,6 +28,7 @@ const breadcrumbs = ref([
                     class="border rounded-md">
                     <template v-slot:column.name="{ column }">
                         {{ column.title.toUpperCase() }}
+                        
                     </template>
                 </v-data-table>
             </UiParentCard>

@@ -36,7 +36,7 @@ import LoginForm from '@/components/auth/LoginForm.vue';
 
 <style>
     .fondo {
-        background-color: black;
+        background-color: rgb(255, 255, 255);
     }
     .fondo-form {
         background-color: #ac0009;
